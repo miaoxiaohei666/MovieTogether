@@ -3,16 +3,14 @@ package movie.service.friend;
 import movie.dao.bean.*;
 import movie.dao.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
-import javax.sound.midi.Receiver;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class FriendService implements FriendInterface {
+public class FriendService {
 
     @Autowired
     FriendModel friendModel;
@@ -21,93 +19,70 @@ public class FriendService implements FriendInterface {
     InviteModel inviteModel;
 
     @Autowired
-    ChatModel chatModel;
-
-    @Autowired
     UserModel userModel;
     @Autowired
     MovieModel movieModel;
 
-
-    @Override
-    public void createMessage(String content, String sender, String receiver) {
-        ChatBean chatBean = new ChatBean();
-        chatBean.setSender(sender);
-        chatBean.setReceiver(receiver);
-        chatBean.setContent(content);
-        chatModel.save(chatBean);
-    }
-    @Override
-    public void creatInvite(String Inviter,String receiver){
+    public void creatInvite(Integer inviter, Integer receiver) {
         InviteBean inviteBean = new InviteBean();
-        inviteBean.setInviter(Inviter);
+        inviteBean.setInviter(inviter);
         inviteBean.setReceiver(receiver);
+        inviteBean.setTime(String.valueOf(LocalDateTime.now()));
         inviteModel.save(inviteBean);
     }
 
-    @Override
-    public List<MovieBean> getMovieBylabel(String inviter, String receiver){
+    public List<MovieBean> getMovieBylabel(Integer inviter, Integer receiver) {
 
-        UserBean user1= userModel.findByPhone(inviter);
-        UserBean user2= userModel.findByPhone(receiver);
-        List<String> list =new ArrayList<>();
-        List<String> list2 =new ArrayList<>();
-        List<MovieBean> list3 =new ArrayList<>();
+        UserBean user1 = userModel.getUserBeanById(inviter);
+        UserBean user2 = userModel.getUserBeanById(receiver);
+        List<String> list = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+        List<MovieBean> list3 = new ArrayList<>();
         list.add(user1.getLabel1());
         list.add(user1.getLabel2());
         list.add(user1.getLabel3());
-        if(list.contains(user2.getLabel1())){
+        if (list.contains(user2.getLabel1())) {
             list2.add(user2.getLabel1());
         }
-        if(list.contains(user2.getLabel2())){
+        if (list.contains(user2.getLabel2())) {
             list2.add(user2.getLabel2());
         }
-        if(list.contains(user2.getLabel3())){
+        if (list.contains(user2.getLabel3())) {
             list2.add(user2.getLabel3());
         }
         System.out.println(list2);
-        for(String label:list2){
+        for (String label : list2) {
             list3.addAll(movieModel.findAllByLabel(label));
         }
 
         return list3;
 
     }
-    @Override
-    public List<ChatModel.Message> getMessage(String phone1,String phone2) {
-        return chatModel.findByPhone(phone1,phone2);
+
+    public List<UserBean> getFriendList(Integer user_id) {
+        List<FriendBean> friendBeanList = friendModel.findByUserid(user_id);
+        List<UserBean> userBeanList = new ArrayList<>();
+        for (FriendBean friendBean : friendBeanList) {
+            userBeanList.add(userModel.getUserBeanById(friendBean.getFriendid()));
+        }
+        return  userBeanList;
     }
 
-    @Override
-    public List<UserBean> getFriendList2(String phone) {
-        return friendModel.findAllByUser1Id(phone);
+    public List<UserBean> getUserList(Integer friend_id) {
+        List<FriendBean> userBeanList = friendModel.findByFriendid(friend_id);
+        List<UserBean> friendBeanList = new ArrayList<>();
+        for (FriendBean friendBean : userBeanList) {
+            friendBeanList.add(userModel.getUserBeanById(friendBean.getFriendid()));
+        }
+        return  friendBeanList;
     }
-    @Override
-    public List<UserBean> getFriendList1(String phone) {
-        return friendModel.findAllByUser2Id(phone);
-    }
-    @Override
+
     public void addFriend(FriendBean friendBean) {
         friendModel.save(friendBean);
     }
-    @Override
-    public boolean checkPhone(String phone){
-        return userModel.existsByPhone(phone);
-    }
 
-    @Override
-    public void delFriend(String phone1,String phone2){
-        friendModel.deleteByPhone(phone1,phone2);
-    }
-    @Override
-    public void delChatMessageByPhone(String phone1,String phone2){
-        chatModel.delMessageByPhone(phone1,phone2);
-    }
-    @Override
-    public void delInviteByPhone(String inviter,String phone){inviteModel.delInviteByPhone(inviter,phone);}
-    @Override
-    public List <InviteModel.Invite> getInvite(String phone){
-        return inviteModel.findAllByReceiverPhone(phone);
+    public void delFriend(Integer user_id, Integer friend_id) {
+        friendModel.delete(friendModel.findByUseridAndFriendid(user_id,friend_id));
     }
 
 }

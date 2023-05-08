@@ -8,8 +8,8 @@ public class FriendBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer user_id;
-    private Integer friend_id;
+    private Integer userid;
+    private Integer friendid;
 
     public Integer getId() {
         return id;
@@ -19,19 +19,19 @@ public class FriendBean {
         this.id = id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserid(Integer user_id) {
+        this.userid = user_id;
     }
 
-    public Integer getFriend_id() {
-        return friend_id;
+    public Integer getFriendid() {
+        return friendid;
     }
 
-    public void setFriend_id(Integer friend_id) {
-        this.friend_id = friend_id;
+    public void setFriendid(Integer friend_id) {
+        this.friendid = friend_id;
     }
 }

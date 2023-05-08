@@ -6,7 +6,6 @@ import movie.dao.bean.MovieBean;
 import movie.dao.bean.UserBean;
 import movie.dao.model.InviteModel;
 import movie.dao.model.UserModel;
-import movie.service.friend.FriendInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

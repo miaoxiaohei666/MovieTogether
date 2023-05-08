@@ -3,7 +3,6 @@ package movie.controller;
 import com.alibaba.fastjson.JSONObject;
 import movie.dao.bean.UserBean;
 import movie.dao.model.UserModel;
-import movie.service.user.UserInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

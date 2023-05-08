@@ -1,11 +1,8 @@
 package movie.service.movie;
 
-import movie.dao.bean.ScreeningBean;
 import movie.dao.model.MovieModel;
-import movie.dao.bean.MovieBean;
 import movie.dao.model.ScreeningModel;
 import movie.dao.model.UserModel;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +10,7 @@ import java.util.List;
 
 
 @Service
-public class MovieService implements MovieInterface {
+public class MovieService{
 
     @Autowired
     MovieModel movieModel;
@@ -23,7 +20,6 @@ public class MovieService implements MovieInterface {
     @Autowired
     UserModel userModel;
 
-    @Override
     public List<ScreeningModel.Screening> getScreeningByMovieId(Integer movieId) {
         return screeningModel.findAllByMovieId(movieId);
     }
