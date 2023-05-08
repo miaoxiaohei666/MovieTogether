@@ -23,46 +23,24 @@ public class JWT {
     /**
      * 生成 token
      */
-    public static String getToken(String phone, Integer role) {
-
+    public static String getToken(Integer id) {
         Date date = new Date(System.currentTimeMillis() + 10 * 86400 * 1000);
         String jwtToken = Jwts.builder()
-                .claim("phone", phone)
-                .claim("role", role)
-
+                .claim("userid", id)
                 .setId(UUID.randomUUID().toString())
                 .setExpiration(date)
-//                .signWith(SignatureAlgorithm.HS512, secret)
                 .signWith(K)
                 .compact();
         return jwtToken;
     }
 
-    public static String parsePhoneFromToken(String token) {
-        Map<String, Object> body;
-        try {
-//            body = Jwts.parser()
-//                    .setSigningKey(secret)
-//                    .parseClaimsJws(token)
-//                    .getBody();
-            body = Jwts.parserBuilder().setSigningKey(K).build().parseClaimsJws(token).getBody();
-        } catch (Exception e) {
-            return "";
-        }
-
-        return body.get("phone").toString();
-
-    }
-
-    public static String parseRoleFromToken(String token) {
+    public static String parseUserIDFromToken(String token) {
         Map<String, Object> body;
         try {
             body = Jwts.parserBuilder().setSigningKey(K).build().parseClaimsJws(token).getBody();
         } catch (Exception e) {
             return "";
         }
-
-        return body.get("role").toString();
+        return body.get("userid").toString();
     }
-
 }

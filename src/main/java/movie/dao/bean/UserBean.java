@@ -8,6 +8,7 @@ public class UserBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Integer stunb;
     private String password;
     private String name;
     private String sex;
@@ -15,6 +16,14 @@ public class UserBean {
     private String label1;
     private String label2;
     private String label3;
+
+    public Integer getStunb() {
+        return stunb;
+    }
+
+    public void setStunb(Integer stunb) {
+        this.stunb = stunb;
+    }
 
     public Integer getId() {
         return id;

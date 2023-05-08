@@ -14,8 +14,9 @@ drop table if exists invites;
 create table users
 (
     id       int auto_increment primary key,
+    stunb    int          not null,
     password varchar(255) not null,
-    name     varchar(255) not null,
+    nickname varchar(255) not null,
     sex      varchar(255) not null,
     age      int          not null,
     label1   varchar(255) null,
@@ -60,7 +61,7 @@ create table cinemas
 -- ----------------------
 create table friends
 (
-    id      int auto_increment primary key,
+    id        int auto_increment primary key,
     user_id   int not null,
     friend_id int not null
 );
@@ -71,7 +72,7 @@ create table friends
 create table invites
 (
     id       int auto_increment primary key,
-    inviter  int not null,
-    receiver int not null,
+    inviter  int          not null,
+    receiver int          not null,
     time     varchar(255) not null
 );
