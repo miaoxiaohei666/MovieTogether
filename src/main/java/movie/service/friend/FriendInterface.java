@@ -1,7 +1,6 @@
 package movie.service.friend;
 
 import movie.dao.bean.*;
-import movie.dao.model.ChatModel;
 import movie.dao.model.InviteModel;
 
 import java.util.List;

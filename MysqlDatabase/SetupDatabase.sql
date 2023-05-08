@@ -60,6 +60,7 @@ create table cinemas
 -- ----------------------
 create table friends
 (
+    id      int auto_increment primary key,
     user_id   int not null,
     friend_id int not null
 );

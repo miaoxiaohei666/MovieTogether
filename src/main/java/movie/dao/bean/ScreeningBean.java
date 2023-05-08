@@ -8,33 +8,9 @@ public class ScreeningBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer movieId;
-    private Integer cinemaId;
+    private Integer cinema_id;
+    private Integer movie_id;
     private String time;
-
-    public Integer getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(Integer movieId) {
-        this.movieId = movieId;
-    }
-
-    public Integer getCinemaId() {
-        return cinemaId;
-    }
-
-    public void setCinemaId(Integer cinemaId) {
-        this.cinemaId = cinemaId;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     public Integer getId() {
         return id;
@@ -44,4 +20,27 @@ public class ScreeningBean {
         this.id = id;
     }
 
+    public Integer getCinema_id() {
+        return cinema_id;
+    }
+
+    public void setCinema_id(Integer cinema_id) {
+        this.cinema_id = cinema_id;
+    }
+
+    public Integer getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(Integer movie_id) {
+        this.movie_id = movie_id;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 }

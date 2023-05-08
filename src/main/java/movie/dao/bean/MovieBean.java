@@ -15,21 +15,8 @@ public class MovieBean {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String label;
-    private String introduction;
-    private String cover;
-
-
-
     private String time;
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
+    private String sort;
 
     public Integer getId() {
         return id;
@@ -47,27 +34,19 @@ public class MovieBean {
         this.name = name;
     }
 
-    public String getLabel() {
-        return label;
+    public String getTime() {
+        return time;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getIntroduction() {
-        return introduction;
+    public String getSort() {
+        return sort;
     }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 }

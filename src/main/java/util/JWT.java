@@ -1,12 +1,12 @@
 package util;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
+
 import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
@@ -16,8 +16,10 @@ public class JWT {
     public static class Token {
         public String token;
     }
+
     static String secret = "JO6HN3NGIU25G2FIG8V7VD6CK9B6T2Z5";
     static SecretKey K = Keys.hmacShaKeyFor(secret.getBytes());
+
     /**
      * 生成 token
      */

@@ -8,12 +8,9 @@ public class InviteBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private String inviter;
-
-    private String receiver;
-
-//    private String time;
+    private Integer inviter;
+    private Integer receiver;
+    private String time;
 
     public Integer getId() {
         return id;
@@ -23,29 +20,27 @@ public class InviteBean {
         this.id = id;
     }
 
-    public String getInviter() {
+    public Integer getInviter() {
         return inviter;
     }
 
-    public void setInviter(String inviter) {
+    public void setInviter(Integer inviter) {
         this.inviter = inviter;
     }
 
-    public String getReceiver() {
+    public Integer getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(String receiver) {
+    public void setReceiver(Integer receiver) {
         this.receiver = receiver;
     }
 
-//    public String getTime() {
-//        return time;
-//    }
-//
-//    public void setTime(String time) {
-//        this.time = time;
-//    }
+    public String getTime() {
+        return time;
+    }
 
-
+    public void setTime(String time) {
+        this.time = time;
+    }
 }
