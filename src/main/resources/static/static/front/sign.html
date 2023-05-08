@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <title>注册</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .center {
+            background-color: white;
+            width: 700px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            opacity: 0.8;
+            display: table;
+        }
+        
+        .tit {
+            text-align: center;
+            font-size: 40px;
+            position: relative;
+            top: 50px;
+        }
+        
+        .login {
+            position: relative;
+            top: 70px;
+            left: 280px;
+            font-size: 17px;
+        }
+        
+        .biao {
+            position: relative;
+            top: 60px;
+        }
+        
+        .ph {
+            width: 50px;
+        }
+        
+        .head {
+            position: relative;
+            left: 150px;
+            top: 30px;
+            border: 10px solid white;
+        }
+        
+        .body {
+            font-size: 25px;
+            position: relative;
+            left: 180px;
+            top: 30px;
+        }
+        
+        .in {
+            width: 200px;
+            height: 50px;
+            border: 1px solid rgba(142, 140, 140, 0.866);
+            border-radius: 10px;
+            padding-left: 10px;
+            font-size: 17px;
+        }
+        
+        .yan {
+            width: 100px;
+            height: 30px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(142, 140, 140, 0.866);
+            color: black;
+        }
+        
+        .ti {
+            position: relative;
+            top: 80px;
+            background-color: rgb(102, 179, 247);
+            color: white;
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 20px;
+            left: 260px;
+            text-align: center;
+            line-height: 50px;
+        }
+        /* .wrong {
+            position: relative;
+            left: 400px;
+            top: 5px;
+            font-size: 13px;
+            color: white;
+        } */
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div>
+        <img src="imags/背景.jpg" class="back" height="100%" width="100%" style="z-index: -1; position: fixed; opacity: 1.0;" />
+    </div>
+
+    <div class="center">
+        <h2 class="tit">
+            注册您的账户
+        </h2>
+        <span class="login">我有账户,去<a href="login.html" style="color: rgb(6, 150, 240);">登录</a></span>
+
+
+        <form action="" method="post" name="personal" class="biao">
+            <table>
+                <tr>
+                    <td class="head">
+                        <img src="imags/手机.png" class="ph">
+                    </td>
+                    <td class="body">
+                        <input type="text" name="phone" placeholder="请输入手机号码" class="in" id="ph">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="head">
+                        <img src="imags/验证码.png" class="ph">
+                    </td>
+                    <td class="body">
+                        <input type="text" name="yan" placeholder="请输入验证码" class="in" id="code">
+                        <input type="button" name="qingqiu" value="获取验证码" class="yan" id="send">
+                        <!-- <button id="send" class="yan">获取验证码</button> -->
+                    </td>
+                </tr>
+
+            </table>
+            <!-- <span class="wrong" id="wrong">验证码错误</span> -->
+
+
+            <span>
+                <div  class="ti" id="zhu">注册</div>
+            </span>
+
+        </form>
+
+    </div>
+
+
+    <script>
+        var btn = document.getElementById('send');
+        var timp;
+
+        btn.onclick = function() {
+            var phone = document.getElementById('ph').value;
+            var time = 10;
+
+            if (!phone) {
+                alert('请输入手机号');
+                return;
+            }
+
+            if (btn.value !== '获取验证码') {
+                return;
+            }
+
+            Fetch('/user/message', JSON.stringify({
+                phone: phone,
+            })).then(res => {
+                msg = res.msg
+                console.log(msg)
+                if (!msg || msg != "ok") { // 发送失败
+                    alert("发送失败")
+                } else {
+                    alert("发送成功")
+                }
+            })
+
+            // btn.value = time + 's后重新获取';
+            // this.style.fontSize = '12px';
+            // this.style.color = 'red';
+            // timp为计时器
+            timp = setInterval(function() {
+                if (time === 0) {
+                    clearInterval(timp);
+                    // time = 10;
+                    btn.value = '获取验证码';
+                    btn.style.color = 'black';
+                    btn.style.fontSize = '15px';
+
+                } else {
+                    btn.value = time + 's后重新获取';
+                    btn.style.fontSize = '12px';
+                    btn.style.color = 'red';
+                    time--;
+                }
+            }, 1000)
+
+        }
+
+
+
+        var zhu = document.getElementById('zhu');
+        var wr = document.getElementById('wrong');
+        zhu.onclick = function() {
+            var code = document.getElementById('code').value;
+            var phone = document.getElementById('ph').value;
+
+
+            Fetch('/user/signup', JSON.stringify({
+                phone: phone,
+                code: code
+            })).then(res => {
+                token = res.token
+                msg = res.msg
+
+
+
+                if (!token) { // 验证码错误
+                    console.log("验证码错误")
+                    alert("验证码错误")
+                } else {
+                    // 储存token
+                    console.log(token)
+                    localStorage.setItem('token', token)
+                        // 跳转
+                    self.location = 'personal.html';
+                    console.log("跳转")
+                }
+            })
+
+            // wr.style.color = 'red';
+        }
+
+
+        async function Fetch(path, body) {
+
+            return await fetch('http://localhost:8080' + path, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: body,
+            }).then(res => {
+                return res.json()
+            })
+        }
+        // var btn = document.getElementById('send');
+        // var timp;
+
+        // btn.onclick = function() {
+        //     var phone = document.getElementById('ph').value;
+        //     var time = 10;
+
+        //     if (phone.length != 11) {
+        //         alert('请输入正确格式的手机号');
+        //         return;
+        //     }
+
+        //     if (btn.value !== '获取验证码') {
+        //         return;
+        //     }
+
+        //     Fetch('/user/message', JSON.stringify({
+        //         phone: phone,
+        //     })).then(res => {
+        //         msg = res.msg
+        //         console.log(msg)
+        //         if (!msg || msg != "ok") { // 发送失败
+        //             alert("发送失败")
+        //         } else {
+        //             alert("发送成功")
+        //         }
+        //     })
+
+        //     // btn.value = time + 's后重新获取';
+        //     // this.style.fontSize = '12px';
+        //     // this.style.color = 'red';
+        //     // timp为计时器
+        //     timp = setInterval(function() {
+        //         if (time === 0) {
+        //             clearInterval(timp);
+        //             // time = 10;
+        //             btn.value = '获取验证码';
+        //             btn.style.color = 'black';
+        //             btn.style.fontSize = '15px';
+
+        //         } else {
+        //             btn.value = time + 's后重新获取';
+        //             btn.style.fontSize = '12px';
+        //             btn.style.color = 'red';
+        //             time--;
+        //         }
+        //     }, 1000)
+
+        // }
+
+
+
+        // var zhu = document.getElementById('zhu');
+        // var wr = document.getElementById('wrong');
+        // zhu.onclick = function() {
+        //     var code = document.getElementById('code').value;
+        //     var phone = document.getElementById('ph').value;
+
+        //     Fetch('/user/signup', JSON.stringify({
+        //         phone: phone,
+        //         code: code
+        //     })).then(res => {
+        //         console.log("111111111111")
+        //         token = res.token
+        //         if (!token) { // 验证码错误
+        //             console.log("111111111111")
+        //             console.log("验证码错误")
+        //             alert("验证码错误")
+        //         } else {
+        //             alert("123")
+        //                 // 储存token
+        //             console.log(token)
+        //             localStorage.setItem('token', token)
+        //                 // 跳转
+        //                 // self.location = 'personal.html';
+        //             console.log("跳转")
+        //         }
+        //     })
+
+
+        //     // wr.style.color = 'red';
+        // }
+
+
+        // var ip = 'http://127.0.0.1:8080'
+        // async function Fetch(path, body) {
+        //     return await fetch(ip + path, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json;charset=utf-8'
+        //         },
+        //         body: body,
+        //     }).then(res => {
+        //         return res.json()
+        //     })
+        // }
+    </script>
+</body>
+
+</html>

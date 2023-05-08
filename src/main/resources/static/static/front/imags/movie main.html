@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电影首页</title>
+  <script src="jquery.min.js"></script>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .top {
+      width: 100%;
+      height: 50px;
+      background-color: rgb(56, 56, 56);
+      position: fixed;
+    }
+
+    .icon {
+      width: 40px;
+      position: relative;
+      left: 20px;
+      top: 5px;
+    }
+
+    .tit {
+      letter-spacing: 5px;
+      color: white;
+      font-size: 30px;
+      position: relative;
+      left: 20px;
+      top: -5px;
+      font-family: 华文行楷;
+    }
+
+    .head1 {
+      position: relative;
+      top: 70px;
+      left: 40px;
+      color: white;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    .head2 {
+      position: relative;
+      top: 100px;
+      left: 40px;
+      color: white;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    .btn1 {
+      width: 70px;
+      height: 30px;
+      font-size: 15px;
+      border-radius: 20px;
+      position: relative;
+      left: 100px;
+      top: 70px;
+      background-color: rgb(230, 230, 230);
+      border: 0px;
+    }
+
+    .btn2 {
+      width: 70px;
+      height: 30px;
+      font-size: 15px;
+      border-radius: 20px;
+      position: relative;
+      left: 100px;
+      background-color: rgb(96, 164, 236);
+      color: white;
+      border: 0px;
+      top: 100px;
+    }
+
+    .btn3 {
+      width: 70px;
+      height: 30px;
+      font-size: 15px;
+      border-radius: 20px;
+      position: relative;
+      left: 100px;
+      background-color: rgb(230, 230, 230);
+      border: 0px;
+      top: 100px;
+    }
+
+    .again {
+      width: 70px;
+      height: 30px;
+      font-size: 15px;
+      color: white;
+      border-radius: 20px;
+      position: absolute;
+      left: 1000px;
+      top: 70px;
+      background-color: rgb(96, 164, 236);
+      border: 0px;
+    }
+
+    .me {
+      width: 80px;
+      height: 30px;
+      font-size: 15px;
+      color: white;
+      border-radius: 20px;
+      position: absolute;
+      top: 70px;
+      left: 1100px;
+      background-color: rgb(96, 164, 236);
+      border: 0px;
+    }
+
+    .main {
+      background-color: white;
+      width: 1000px;
+      margin: 0 auto;
+      height: 100vh;
+      position: relative;
+      opacity: 0.8;
+      z-index: 0;
+      top: 110px;
+    }
+
+    .zb {
+      width: 210px;
+      height: 210px;
+      margin: 20px;
+      float: left;
+      text-align: center;
+    }
+
+    .b4 {
+      width: 85px;
+      height: 85px;
+      border: 1px solid;
+      background-color: deepskyblue;
+      margin: 6px;
+      float: left;
+    }
+
+    .movie {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+<div>
+  <div style="z-index: 100;">
+    <div class="top">
+      <img class="icon" src="电影(2).png">
+      <b class="tit">一起看电影吧</b>
+    </div>
+    <div>
+      <img src="背景.jpg" class="back" height="100%" width="100%"
+           style="z-index: -1; position: fixed; opacity: 0.9;" />
+    </div>
+  </div>
+
+
+  <p>
+    <b class="head1">分类</b>
+
+    <button class="btn1" type="button" id="1">1</button>&nbsp;
+    <button type="button" class="btn1" id="2">爱情片</button>&nbsp;
+    <button type="button" class="btn1" id="3">惊悚片</button>&nbsp;
+    <button type="button" class="btn1" id="4">悬疑片</button>
+
+
+    <button type="button" class="again" onclick="window.location.reload()">重置</button>
+    <button type="button" class="me" onclick="location.href='me.html'">个人主页</button>
+  </p>
+
+
+  <p>
+    <b class="head2">关键词</b>
+    <button type="button" class="btn2">电影</button>&nbsp;
+    <button type="button" class="btn3">用户</button>
+  </p>
+</div>
+
+<div class="main">
+</div>
+
+<script>
+  var ip = 'http://10.102.46.47:8080'
+  var address
+  var flag1 = 1;
+  var flag2 = 1;
+  var flag3 = 1;
+  var flag4 = 1;
+  var flag5 = 1;
+  async function Fetch(path, body) {
+    return await fetch(ip + path, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: body,
+    }).then(res => {
+      return res.json()
+    })
+  }
+
+  Fetch('/movie/all', JSON.stringify({}))
+          .then(res => {
+            list = res.list
+            msg = res.msg
+            var main = document.querySelector(".main");
+            for (var i = 0; i < list.length; i++) {
+              var div = document.createElement('div');
+              var img = document.createElement('img');
+              img.src = list[i].cover
+              var b = document.createElement('b')
+              img.className = "movie"
+              b.innerHTML = list[i].name
+              div.appendChild(img);
+              var br = document.createElement('br')
+              div.appendChild(br);
+              div.appendChild(b);
+              div.className = "zb";
+              b.className = list[i].id;
+              main.appendChild(div);
+              div.click(function () {
+                self.location = 'movie_detail.html'
+
+                localStorage.setItem('movie_id', list[i].id)
+
+              })
+              //list.name + "   " + list.age + "   " + list.sex
+            }
+          })
+
+  function deleteChild() {
+    var e = document.querySelector(".main");
+    var first = e.firstElementChild;
+    while (first) {
+      first.remove();
+      first = e.firstElementChild;
+    }
+  }
+  var label;
+  function search() {
+    Fetch('/movie/label', JSON.stringify({
+      label: label
+    }))
+            .then(res => {
+              list = res.list
+              msg = res.msg
+              var main = document.querySelector(".main");
+              for (var i = 0; i < list.length; i++) {
+                var img = document.createElement('img');
+                img.src = list[i].cover
+                img.className = "zb";
+                main.appendChild(img);
+                //list.name + "   " + list.age + "   " + list.sex
+              }
+            })
+  }
+  function search1() {
+    deleteChild();
+    if (flag1 == 0) {
+      label = "1";
+      search();
+    }
+    if (flag2 == 0) {
+      label = "2";
+      search();
+    }
+    if (flag3 == 0) {
+      label = "3";
+      search();
+    }
+    if (flag4 == 0) {
+      label = "4";
+      search();
+    }
+  }
+  function search3() {
+    Fetch('/user/label', JSON.stringify({
+      label: label,
+      address: address
+    }))
+            .then(res => {
+              list = res.list
+              var main = document.querySelector(".main");
+              for (var i = 0; i < list.length; i++) {
+                var b = document.createElement('b');
+                b.className = "b4"
+                b.innerHTML = list[i].name + "<br>" + list[i].age + "<br>" + list[i].sex;
+                main.appendChild(b);
+              }
+            })
+  }
+
+  function search2() {
+    deleteChild();
+    if (flag1 == 0) {
+      label = "1";
+      search3();
+    }
+    if (flag2 == 0) {
+      label = "2";
+      search3();
+    }
+    if (flag3 == 0) {
+      label = "3";
+      search3();
+    }
+    if (flag4 == 0) {
+      label = "4";
+      search3();
+    }
+  }
+
+  var token = localStorage.getItem("token")
+  Fetch('/user/info', JSON.stringify({
+    token: token
+  }))
+          .then(res => {
+            msg = res.msg
+            address = res.addr
+          })
+  $(".btn3").click(function () {
+    $(this).css('color', 'white');
+    $(this).css('background-color', 'rgb(96, 164, 236)');
+    $(".btn2").css('background-color', 'rgb(230,230,230)');
+    $(".btn2").css('color', 'black');
+    flag5 = 0;
+    search2();
+  })
+  $(".btn2").click(function () {
+    $(this).css('color', 'white');
+    $(this).css('background-color', 'rgb(96, 164, 236)');
+    $(".btn3").css('background-color', 'rgb(230,230,230)');
+    $(".btn3").css('color', 'black');
+    flag5 = 1;
+    search1();
+  })
+  $("#1").click(function () {
+    if (flag1 == 1) {
+      $(this).css("background", "lightblue");
+      flag1 = 0;
+    }
+    else { $(this).css("background", "rgb(230,230,230)"); flag1 = 1; }
+    if (flag5 == 1)
+      search1();
+    else
+      search2();
+  })
+  $("#2").click(function () {
+    if (flag2 == 1) {
+      $(this).css("background", "lightblue");
+      flag2 = 0;
+    }
+    else { $(this).css("background", "rgb(230,230,230)"); flag2 = 1; }
+    if (flag5 == 1)
+      search1();
+    else
+      search2();
+  })
+  $("#3").click(function () {
+    if (flag3 == 1) {
+      $(this).css("background", "lightblue");
+      flag3 = 0;
+    }
+    else { $(this).css("background", "rgb(230,230,230)"); flag3 = 1; }
+    if (flag5 == 1)
+      search1();
+    else
+      search2();
+  })
+  $("#4").click(function () {
+    if (flag4 == 1) {
+      $(this).css("background", "lightblue");
+      flag4 = 0;
+    }
+    else { $(this).css("background", "rgb(230,230,230)"); flag4 = 1; }
+    if (flag5 == 1)
+      search1();
+    else
+      search2();
+  })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0 auto;
+        }
+        .center {
+            background-color: white;
+            width: 700px;
+            height: 100vh;
+            position: relative;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        .id {
+            font-weight: 400;
+            letter-spacing: 5px;
+            font-size: 40px;
+            position: relative;
+            left: 30px;
+            top: 10px;
+        }
+        
+        .update {
+            width: 100px;
+            height: 30px;
+            border-radius: 25px;
+            background-color: rgb(102, 179, 247);
+            color: white;
+            border: 0px;
+            position: relative;
+            font-size: 15px;
+            left: 250px;
+            top: 40px;
+        }
+        
+        .exit {
+            width: 60px;
+            height: 30px;
+            border-radius: 25px;
+            background-color: rgb(248, 139, 139);
+            color: white;
+            border: 0px;
+            position: relative;
+            font-size: 15px;
+            left: 270px;
+            top: 40px;
+        }
+        
+        .head {
+            position: relative;
+            border: 15px solid white;
+            font-size: 25px;
+            left: -20px;
+            top: 20px;
+        }
+        
+        .body {
+            position: relative;
+            left: -20px;
+            top: 20px;
+            width: 400px;
+            height: 30px;
+            border: 5px solid;
+            border-color: rgba(211, 211, 211, 0.733);
+            border-radius: 10px;
+            color: black;
+            padding-left: 10px;
+        }
+        
+        .zhu {
+            position: relative;
+            background-color: rgb(48, 146, 231);
+            color: white;
+            height: 50px;
+            width: 200px;
+            border-radius: 20px;
+            top: 100px;
+            left: 250px;
+            font-size: 20px;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="imags/背景.jpg" class="back" height="100%" width="100%" style="z-index: -1; position: fixed; opacity: 1.0;" />
+    </div>
+    <div class="center">
+
+        <b class="id">个人主页</b>
+        <img src="imags/个人主页.png" style="width: 50px; position: relative; top: 20px; left: 20px;">
+        <span>
+                <button onclick="location.href='personal.html'" class="update" type="button">
+                    修改个人信息
+                </button>
+
+                <button onclick="location.href = '../index.html'" class="exit" type="button">
+                退出
+                </button>
+
+        </span>
+        <form style=" top: 50px; position: relative;">
+            <table>
+
+                <tr>
+                    <td class="head">用户名</td>
+                    <td><input disabled ="true" type="text" class="body" id="name" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">性别</td>
+                    <td><input disabled ="true" type="text" class="body" id="sex" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">年龄</td>
+                    <td><input disabled ="true" type="text" class="body" id="age" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">所在地址</td>
+                    <td><input disabled ="true" type="text" class="body" id="addr" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">喜好标签</td>
+                    <td><input disabled ="true" type="text" class="body" id="love" value="无"></td>
+                </tr>
+
+
+            </table>
+        </form>
+        <!-- <span>
+            <input type="button" value="修改个人信息" class="zhu" onclick="location.href='personal.html'">
+        </span> -->
+    </div>
+
+    <script>
+        // var searchStr = location.search;
+        // searchStr = searchStr.substr(1);
+        // var searchs = searchStr.split("&");
+        // var address = searchs[0].split("=");
+        // document.getElementsById("name").value = address[1];
+
+        //查询个人信息
+        Fetch('/user/info', JSON.stringify({
+                token: localStorage.getItem("token")
+            }))
+            .then(res => {
+                msg = res.msg
+                if (!msg || msg == "wrong token!") {
+                    alert('请先登录!')
+                } else {
+                    document.getElementById("name").value = res.name
+                    document.getElementById("sex").value = res.sex
+                    document.getElementById("age").value = res.age
+                    document.getElementById("addr").value = res.addr
+                    document.getElementById("love").value = res.label1 + ' ' + res.label2 + ' ' + res.label3
+                }
+
+            })
+
+
+        async function Fetch(path, body) {
+            return await fetch("http://127.0.0.1:8080" + path, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    // 'Origin': '*'
+                },
+                body: body,
+            }).then(res => {
+                return res.json()
+            })
+        }
+    </script>
+
+</body>
+
+</html>

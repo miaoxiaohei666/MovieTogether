@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一起看电影吧</title>
+    <!-- 引入初始化样式文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0;
+        }
+        
+        .back {
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            position: fixed;
+        }
+        
+        .w {
+            padding: 0 auto;
+        }
+        
+        img {
+            height: 100px;
+        }
+        
+        .liuxing {
+            z-index: 10;
+            position: relative;
+            left: 100px;
+            top: 100px;
+        }
+        
+        .yi {
+            width: 300px;
+            color: white;
+            font-size: 100px;
+            position: relative;
+            left: 200px;
+            top: 100px;
+            font-family: '华文行楷';
+        }
+        
+        .dianying {
+            position: relative;
+            left: 500px;
+        }
+        
+        .dian {
+            width: 300px;
+            color: white;
+            font-size: 100px;
+            position: relative;
+            left: 100px;
+            font-family: '华文行楷';
+        }
+        
+        .bot {
+            width: 700px;
+            color: white;
+            font-size: 30px;
+            position: relative;
+            top: -50px;
+            left: 150px;
+        }
+        
+        .zhu {
+            position: relative;
+            background-color: rgb(48, 146, 231);
+            color: white;
+            height: 50px;
+            width: 200px;
+            border-radius: 20px;
+            top: -90px;
+            left: 900px;
+            font-size: 20px;
+            border: 0;
+        }
+        
+        .deng {
+            position: relative;
+            background-color: rgb(48, 146, 231);
+            color: white;
+            height: 50px;
+            width: 200px;
+            border-radius: 20px;
+            left: 900px;
+            top: -50px;
+            font-size: 20px;
+            border: 0;
+        }
+    </style>
+
+
+
+
+
+</head>
+
+
+<body>
+
+
+    <div>
+        <img src="front/imags/背景.jpg" class="back" />
+    </div>
+    <div class="w">
+
+        <span class="liuxing">
+            <img src="front/imags/流星(1).png" />
+                
+        </span>
+        <span>
+            <p class="yi">一起看</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+        </span>
+        <span class="dianying">
+            <img src="front/imags/电影(3).png" style="z-index: 10;"/>
+        </span>
+
+        <br>
+        <span>
+            <p class="dian">
+            电影吧
+            </p>
+        </span>
+        <span>
+            <input type="button" value="注册" class="zhu" onclick="location.href='front/sign.html'"><br>
+            <input type="button" value="登录" class="deng" onclick="location.href='front/login.html' ">
+
+        </span>
+
+        <span>
+            <p class="bot">
+                你总会遇到一个人，如冬日暖阳，似暗夜星光。
+            </p>
+        </span>
+
+    </div>
+
+
+
+</body>
+
+
+</html>

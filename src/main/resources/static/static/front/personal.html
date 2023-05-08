@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css/base.css"> -->
+    <title>填写个人信息</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        
+        .back {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .center {
+            background-color: white;
+            width: 700px;
+            height: 100vh;
+            position: relative;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        .tit {
+            text-align: center;
+            font-size: 40px;
+            position: relative;
+            top: 50px;
+        }
+        
+        .biao {
+            position: relative;
+            top: 60px;
+        }
+        
+        .head {
+            font-size: 25px;
+            position: relative;
+            left: 45px;
+            top: 20px;
+            border: 8px solid white;
+        }
+        
+        .body {
+            font-size: 25px;
+            position: relative;
+            left: 40px;
+            top: 20px;
+        }
+        
+        .btn {
+            position: relative;
+            left: 230px;
+            top: 50px;
+        }
+        
+        .ti {
+            background-color: rgb(102, 179, 247);
+            width: 200px;
+            height: 50px;
+            border-radius: 20px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 900;
+        }
+        
+        .b1 {
+            height: 30px;
+        }
+        
+        .b2 {
+            height: 30px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="imags/背景.jpg" class="back" height="100%" width="100%" style="z-index: -1; position: fixed; opacity: 1.0;" />
+    </div>
+
+    <div class="center">
+        <h2 class="tit">请填写您的基本信息</h2>
+        <!-- 表单域 -->
+        <form action="me.html" method="post" name="personal" class="biao">
+            <table>
+                <tr>
+                    <td class="head">用户名：</td>
+                    <td class="body"> <input type="text" maxlength="6" placeholder="请输入用户名" class="b1" name="nm" id="name"></td>
+                </tr>
+                <tr>
+                    <td class="head">密码：</td>
+                    <td class="body"> <input type="password" placeholder="设置密码" class="b2" id="pw"></td>
+                </tr>
+                <tr>
+                    <td class="head">确认密码：</td>
+                    <td class="body"> <input type="password" placeholder="确认密码" class="b2"></td>
+                </tr>
+                <tr>
+                    <td class="head">性别：</td>
+                    <td class="body" id="sex">
+                        <input type="radio" name="sex" id="nan" value="男" checked="checked">
+                        <label for="nan">男</label>
+
+                        <input type="radio" name="sex" id="nv" value="女">
+                        <label for="nv">女</label>
+
+                        <input type="radio" name="sex" id="wei" value="其它">
+                        <label for="wei">其它</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="head">年龄：</td>
+                    <td class="body">
+                        <select name="age" id="age" onchange="jump_age(this)">
+                            <script language="javascript">
+                            for(var i=0;i<=120;i++) document.write('<option value="'+i+'">'+i+'</option>');
+                            </script>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="head">所在地址： </td>
+                    <td class="body"><input type="text" name="address" placeholder="××省××市××区" class="b2" id="address"></td>
+                </tr>
+                <tr>
+                    <td class="head">喜好标签：</td>
+                    <td class="body">
+                        <input type="checkbox" name="love" value="惊悚片" id="jing" >
+                        <label for="jing">恐怖片</label>
+                        <input type="checkbox" name="love" value="喜剧片" id="xi" >
+                        <label for="xi">喜剧片</label>
+                        <input type="checkbox" name="love" value="枪战片" id="qiang" >
+                        <label for="qiang">动作片</label>
+                        <input type="checkbox" name="love" value="爱情片" id="ai" >
+                        <label for="ai">爱情片</label>
+                        <br>
+                        <input type="checkbox" name="love" value="悬疑片" id="xuan" >
+                        <label for="xuan">悬疑片</label>
+                        <input type="checkbox" name="love" value="科幻片" id="ke" >
+                        <label for="ke">科幻片</label>
+                        <input type="checkbox" name="love" value="剧情片" id="ju" >
+                        <label for="ju">剧情片</label>
+                    </td>
+                </tr>
+            </table>
+            <span class="btn">
+                <div class="ti" id="sub"> 提交</div>
+            </span>
+        </form>
+
+    </div>
+    <script>
+
+        // var checkedCount = 0;
+        // function checkCount(obj){
+        //     if(obj.checked === true){
+        //         if(checkedCount != 3){
+        //             alert("需要选择三种类型哦^_^");
+        //             return false;
+        //         }
+        //         checkedCount ++;
+        //     }else{
+        //         checkCount--;
+        //     }
+        //     return true;
+        // }
+
+        // onclick="return checkCount(this)"
+
+
+        var sub = document.getElementById('sub');
+        // console.log(localStorage.getItem('token'))
+        sub.onclick = function() {           
+            var label = [];
+            var la = document.getElementsByName('love');
+            for(var i = 0; i< la.length; i++ ){
+                if(la[i].checked){
+
+                    label.push(la[i].value)
+                }
+            }
+
+
+            var sexValue;
+            let sex = document.getElementsByName("sex");
+            for (var i = 0; i < sex.length; i++) {
+                if (sex[i].checked) {
+                    sexValue = sex[i].value
+                    break
+                }
+            }
+            var address = document.getElementById('address').value;
+            var na = document.getElementById('name').value;
+            var password = document.getElementById('pw').value;
+            var age = document.getElementById('age').value;
+
+            Fetch('/user/update', JSON.stringify({
+                // token: localStorage.getItem("token"),
+                token: "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjEzNzc4MTA2NjIxIiwicm9sZSI6MCwianRpIjoiZDRjYTg4NWEtYmE5My00OGZhLWJkZTgtNGJiMWE1ZTk5YzVkIiwiZXhwIjoxNjU3NjI3OTUzfQ.j7-hNvc17xtpOiYM9jLc0Y416-0KqP68EbsX5HZ9j7c",
+                address: address,
+                name: na,
+                password: password,
+                label1: label[0],
+                label2: label[1],
+                label3: label[2],
+                age: age,
+                sex: sexValue
+            })).then(res => {
+                msg = res.msg
+                if (!msg) { // 错误
+                    console.log("错误")
+                    alert("错误")
+                } else {
+                    
+                    // self.location = 'movie_index.html';
+                    console.log("跳转")
+                }
+            })
+
+           
+        }
+
+
+        var ip = 'http://localhost:8080'
+        async function Fetch(path, body) {
+            return await fetch(ip + path, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: body,
+            }).then(res => {
+                return res.json()
+            })
+        }
+    </script>
+    
+</body>
+
+</html>

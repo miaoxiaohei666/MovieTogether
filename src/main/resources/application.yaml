@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: /start
+  port: 8080
+
+spring:
+  datasource:
+    name: movietogether
+    url: jdbc:mysql://127.0.0.1:3306/movietogether
+    username: root
+    password: 186267740
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    swagger:
+  #      enable: true
+  #      groupName: movie
+  #      basePackage: .springfox.swagger
+  #      version: 1.0.0
+  #      title: movie
+  jpa:
+    database: mysql # 指定数据库类型
+    generate-ddl: true # 自动生成
+    show-sql: true # 现实sql到控制台
+    database-platform: org.hibernate.dialect.MySQL8Dialect # 数据库方言 DataBbase枚举内获取
