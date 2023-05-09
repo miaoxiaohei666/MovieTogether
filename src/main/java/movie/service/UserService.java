@@ -1,4 +1,4 @@
-package movie.service.user;
+package movie.service;
 
 import movie.dao.model.UserModel;
 import movie.dao.bean.UserBean;
@@ -23,5 +23,9 @@ public class UserService{
 
     public List<UserBean> getUserByLabel(String label) {
         return userModel.findAllByLabel1OrLabel2OrLabel3(label, label, label);
+    }
+
+    public void addUser(UserBean user){
+        userModel.save(user);
     }
 }

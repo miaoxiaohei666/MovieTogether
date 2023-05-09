@@ -2,7 +2,7 @@ package movie.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import movie.dao.bean.UserBean;
-import movie.dao.model.UserModel;
+import movie.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,27 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import util.JWT;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class UserController {
     @Autowired
-    UserInterface userService;
-    @Autowired
-    UserModel userModel;
-
-    // 存手机号和验证码
-    Map<String, String> map = new HashMap<>();
+    UserService userService;
 
     // 密码登录
     @PostMapping(value = "/user/login")
     public String login(@RequestBody JSONObject requestUser) {
         JSONObject response = new JSONObject();
-        UserBean userBean = userService.getUserByPhone(requestUser.getString("phone"));
+        UserBean userBean = userService.getUserByStunb(Integer.valueOf(requestUser.getString("stunb")));
         if (userBean == null) {
             response.put("msg", "未查询到该用户");
             return response.toString();
@@ -40,42 +33,30 @@ public class UserController {
             return response.toString();
         }
 
-        String token = JWT.getToken(userBean.getPhone(), userBean.getRole());
+        String token = JWT.getToken(userBean.getId());
 
         response.put("msg", "登录成功");
         response.put("token", token);
         return response.toString();
     }
-    //验证码
-    @PostMapping(value = "/user/message")
-    public String sendMessage(@RequestBody JSONObject request) {
 
-        String phone = request.getString("phone");
-        System.out.println(phone);
-        String code = userService.SendCode(phone);
-
-        map.put(phone, code);
-
-        JSONObject response = new JSONObject();
-        response.put("msg", "ok");
-        System.out.println("ok");
-        return response.toString();
-    }
-
-    // 注册和手机号登录
+    // 注册和学号登录
     @PostMapping(value = "/user/signup")
     public String register(@RequestBody JSONObject request) {
         JSONObject response = new JSONObject();
-        if (!Objects.equals(request.getString("code"), map.get(request.getString("phone")))) {
-            response.put("msg", "验证码错误");
-            return response.toString();
-        }
-        if (!userModel.existsByPhone(request.getString("phone"))) { // 注册
-            UserBean user =new UserBean();
-            user.setPhone(request.getString("phone"));
+        if (userService.getUserByStunb(Integer.valueOf(request.getString("stunb"))) == null) { // 注册
+            UserBean user = new UserBean();
+            user.setStunb(Integer.valueOf(request.getString("stunb")));
+            user.setPassword(request.getString("password"));
+            user.setName(request.getString("name"));
+            user.setSex(request.getString("sex"));
+            user.setAge(Integer.valueOf(request.getString("age")));
+            user.setLabel1(request.getString("label1"));
+            user.setLabel2(request.getString("label2"));
+            user.setLabel3(request.getString("label3"));
             userService.addUser(user);
         }
-        String token = JWT.getToken(request.getString("phone"), 0);
+        String token = JWT.getToken(Integer.valueOf(request.getString("stunb")));
         response.put("msg", "登录成功");
         response.put("token", token);
         return response.toString();
@@ -84,94 +65,81 @@ public class UserController {
     //查询个人信息
     @PostMapping(value = "/user/info")
     public String getInfo(@RequestBody JSONObject request) {
-        String phone = JWT.parsePhoneFromToken(request.getString("token"));
+        Integer id = Integer.valueOf(JWT.parseUserIDFromToken(request.getString("token")));
         JSONObject response = new JSONObject();
-        if (phone.equals("")) {
+        if (id.equals(0)) {
             response.put("msg", "token wrong!");
             return response.toString();
         }
-
-        UserBean user = userService.getUserByPhone(phone);
-
-        response.put("addr", user.getAddress());
-        response.put("name", user.getName());
-        response.put("age", user.getAge());
-        response.put("label1", user.getLabel1());
-        response.put("label2", user.getLabel2());
-        response.put("label3", user.getLabel3());
-        response.put("sex", user.getSex());
-        response.put("msg","ok");
+        UserBean user = userService.getUserByID(id);
+        response.put("msg", "查询成功");
+        JSONObject userInfo = new JSONObject();
+        userInfo.put("id", user.getId());
+        userInfo.put("stunb", user.getStunb());
+        userInfo.put("name", user.getName());
+        userInfo.put("sex", user.getSex());
+        userInfo.put("age", user.getAge());
+        userInfo.put("label1", user.getLabel1());
+        userInfo.put("label2", user.getLabel2());
+        userInfo.put("label3", user.getLabel3());
+        response.put("data", userInfo);
         return response.toString();
+   }
 
-    }
-    //通过电话获取用户信息
-    @PostMapping(value = "/user/getbyphone")
-    public String getUserByPhone(@RequestBody JSONObject request){
+    //通过学号获取用户信息
+    @PostMapping(value = "/user/getbystunb")
+    public String getUserByStunb(@RequestBody JSONObject request) {
         JSONObject response = new JSONObject();
-        UserBean user = userService.getUserByPhone(request.getString("phone"));
-        response.put("addr", user.getAddress());
-        response.put("name", user.getName());
-        response.put("age", user.getAge());
-        response.put("label1", user.getLabel1());
-        response.put("label2", user.getLabel2());
-        response.put("label3", user.getLabel3());
-        response.put("sex", user.getSex());
-        response.put("msg","ok");
+        UserBean user = userService.getUserByStunb(Integer.valueOf(request.getString("stunb")));
+        if (user == null) {
+            response.put("msg", "该用户不存在！");
+            return response.toString();
+        }
+        response.put("msg", "查询成功");
+        JSONObject userInfo = new JSONObject();
+        userInfo.put("id", user.getId());
+        userInfo.put("stunb", user.getStunb());
+        userInfo.put("name", user.getName());
+        userInfo.put("sex", user.getSex());
+        userInfo.put("age", user.getAge());
+        userInfo.put("label1", user.getLabel1());
+        userInfo.put("label2", user.getLabel2());
+        userInfo.put("label3", user.getLabel3());
+        response.put("data", userInfo);
         return response.toString();
     }
+
     //修改个人信息
     @PostMapping(value = "/user/update")
     public String updateInfo(@RequestBody JSONObject request) {
-        System.out.println(request);
         String token = request.getString("token");
-        String phone = JWT.parsePhoneFromToken(token);
+        Integer id = Integer.valueOf(JWT.parseUserIDFromToken(token));
         JSONObject response = new JSONObject();
-        if (phone.equals("")) {
+        if (id.equals(0)) {
             response.put("msg", "token wrong!");
             return response.toString();
         }
-System.out.println(request.getString("label1"));
-System.out.println(request.getString("label1"));
-System.out.println(request.getString("label1"));
-System.out.println(request.getString("label1"));
-        UserBean user = userService.getUserByPhone(phone);
-        user.setAddress(request.getString("address"));
-        user.setName(request.getString("name"));
+        UserBean user = userService.getUserByID(id);
+        user.setStunb(Integer.valueOf(request.getString("stunb")));
         user.setPassword(request.getString("password"));
+        user.setName(request.getString("name"));
+        user.setSex(request.getString("sex"));
+        user.setAge(request.getInteger("age"));
         user.setLabel1(request.getString("label1"));
         user.setLabel2(request.getString("label2"));
         user.setLabel3(request.getString("label3"));
-        user.setAge(request.getInteger("age"));
-        user.setSex(request.getString("sex"));
-        System.out.println(request.getString("name"));
-        System.out.println(request.getString("age"));
-
-        userModel.save(user);
-        response.put("msg", "success!");
+        userService.addUser(user);
+          response.put("msg", "success!");
         return response.toString();
     }
 
-    //根据标签和地址，获取用户群
+    //根据标签获取用户群
     @PostMapping(value = "/user/label")
-    public String getUserByLabelAndAddress(@RequestBody JSONObject request) {
-         String label = request.getString("label");
-         String address = request.getString("address");
-         System.out.println(label + address);
-
-         JSONObject response = new JSONObject();
-         List<UserBean> list= userService.getUserByLabelAndAddress(address,label);
-        System.out.println(list.size());
-        System.out.println(list.size());
-        System.out.println(list.size());
-//         System.out.println(list.get(0));
-//         System.out.println(list.get(0));
-//         System.out.println(list.get(0));
-         response.put("list",list);
+    public String getUserByLabel(@RequestBody JSONObject request) {
+        String label = request.getString("label");
+        JSONObject response = new JSONObject();
+        List<UserBean> list = userService.getUserByLabel(label);
+        response.put("list", list);
         return response.toString();
     }
-
-
-
 }
-
-//"token":"eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjE1OTAzMDMyMzc2Iiwicm9sZSI6MSwianRpIjoiNWVmOThhNTMtYzQ1OS00ODIyLTgyMDItMWJjOGE5YTZiNWIzIiwiZXhwIjoxNjU3MzUwNjcwfQ.S44R6RGc6IZro6CAPbcRS3m_5IgWYh8qyvPd2v2XZeo"

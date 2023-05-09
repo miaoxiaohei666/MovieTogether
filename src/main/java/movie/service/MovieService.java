@@ -1,4 +1,4 @@
-package movie.service.movie;
+package movie.service;
 
 import movie.dao.model.MovieModel;
 import movie.dao.model.ScreeningModel;

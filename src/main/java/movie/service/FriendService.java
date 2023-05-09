@@ -1,4 +1,4 @@
-package movie.service.friend;
+package movie.service;
 
 import movie.dao.bean.*;
 import movie.dao.model.*;
