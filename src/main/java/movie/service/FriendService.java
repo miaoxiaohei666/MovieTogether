@@ -59,6 +59,10 @@ public class FriendService {
 
     }
 
+    public  boolean existById(Integer id){
+        return userModel.existsById(id);
+    }
+
     public List<UserBean> getFriendList(Integer user_id) {
         List<FriendBean> friendBeanList = friendModel.findByUserid(user_id);
         List<UserBean> userBeanList = new ArrayList<>();

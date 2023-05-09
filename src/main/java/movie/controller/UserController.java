@@ -23,7 +23,7 @@ public class UserController {
     @PostMapping(value = "/user/login")
     public String login(@RequestBody JSONObject requestUser) {
         JSONObject response = new JSONObject();
-        UserBean userBean = userService.getUserByStunb(Integer.valueOf(requestUser.getString("stunb")));
+        UserBean userBean = userService.getUserByStunb(requestUser.getInteger("stunb"));
         if (userBean == null) {
             response.put("msg", "未查询到该用户");
             return response.toString();
@@ -44,19 +44,19 @@ public class UserController {
     @PostMapping(value = "/user/signup")
     public String register(@RequestBody JSONObject request) {
         JSONObject response = new JSONObject();
-        if (userService.getUserByStunb(Integer.valueOf(request.getString("stunb"))) == null) { // 注册
+        if (userService.getUserByStunb(request.getInteger("stunb")) == null) { // 注册
             UserBean user = new UserBean();
-            user.setStunb(Integer.valueOf(request.getString("stunb")));
+            user.setStunb(request.getInteger("stunb"));
             user.setPassword(request.getString("password"));
             user.setName(request.getString("name"));
             user.setSex(request.getString("sex"));
-            user.setAge(Integer.valueOf(request.getString("age")));
+            user.setAge(request.getInteger("age"));
             user.setLabel1(request.getString("label1"));
             user.setLabel2(request.getString("label2"));
             user.setLabel3(request.getString("label3"));
             userService.addUser(user);
         }
-        String token = JWT.getToken(Integer.valueOf(request.getString("stunb")));
+        String token = JWT.getToken(request.getInteger("stunb"));
         response.put("msg", "登录成功");
         response.put("token", token);
         return response.toString();
@@ -84,13 +84,13 @@ public class UserController {
         userInfo.put("label3", user.getLabel3());
         response.put("data", userInfo);
         return response.toString();
-   }
+    }
 
     //通过学号获取用户信息
     @PostMapping(value = "/user/getbystunb")
     public String getUserByStunb(@RequestBody JSONObject request) {
         JSONObject response = new JSONObject();
-        UserBean user = userService.getUserByStunb(Integer.valueOf(request.getString("stunb")));
+        UserBean user = userService.getUserByStunb(request.getInteger("stunb"));
         if (user == null) {
             response.put("msg", "该用户不存在！");
             return response.toString();
@@ -120,7 +120,7 @@ public class UserController {
             return response.toString();
         }
         UserBean user = userService.getUserByID(id);
-        user.setStunb(Integer.valueOf(request.getString("stunb")));
+        user.setStunb(request.getInteger("stunb"));
         user.setPassword(request.getString("password"));
         user.setName(request.getString("name"));
         user.setSex(request.getString("sex"));
@@ -129,7 +129,7 @@ public class UserController {
         user.setLabel2(request.getString("label2"));
         user.setLabel3(request.getString("label3"));
         userService.addUser(user);
-          response.put("msg", "success!");
+        response.put("msg", "success!");
         return response.toString();
     }
 
