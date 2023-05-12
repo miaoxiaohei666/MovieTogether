@@ -58,7 +58,7 @@ public class MovieController {
     public String getInfoByLabel(@RequestBody JSONObject request) {//label
         JSONObject response = new JSONObject();
         String label = request.getString("label");
-        List<MovieBean> list = movieModel.findAllByLabel(label);
+        List<MovieBean> list = movieModel.findAllBySort(label);
         response.put("list", list);
         response.put("msg", "ok！");
         return response.toString();
@@ -69,7 +69,7 @@ public class MovieController {
     public String getScreening(@RequestBody JSONObject request) {
         JSONObject response = new JSONObject();
         Integer id = request.getInteger("id");
-        List<ScreeningModel.Screening> list = movieService.getScreeningByMovieId(id);
+        List<ScreeningBean> list = movieService.getScreeningByMovieId(id);
         response.put("list", list);
         MovieBean movie = movieModel.findMovieById(id);
         response.put("movie", movie);

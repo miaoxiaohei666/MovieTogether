@@ -1,5 +1,6 @@
 package movie.service;
 
+import movie.dao.bean.ScreeningBean;
 import movie.dao.model.MovieModel;
 import movie.dao.model.ScreeningModel;
 import movie.dao.model.UserModel;
@@ -20,8 +21,8 @@ public class MovieService{
     @Autowired
     UserModel userModel;
 
-    public List<ScreeningModel.Screening> getScreeningByMovieId(Integer movieId) {
-        return screeningModel.findAllByMovieId(movieId);
+    public List<ScreeningBean> getScreeningByMovieId(Integer movie_id) {
+        return screeningModel.findAllByMovieid(movie_id);
     }
 
 }

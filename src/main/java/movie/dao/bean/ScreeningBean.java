@@ -8,8 +8,8 @@ public class ScreeningBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer cinema_id;
-    private Integer movie_id;
+    private Integer cinemaid;
+    private Integer movieid;
     private String time;
 
     public Integer getId() {
@@ -20,20 +20,20 @@ public class ScreeningBean {
         this.id = id;
     }
 
-    public Integer getCinema_id() {
-        return cinema_id;
+    public Integer getCinemaid() {
+        return cinemaid;
     }
 
-    public void setCinema_id(Integer cinema_id) {
-        this.cinema_id = cinema_id;
+    public void setCinemaid(Integer cinema_id) {
+        this.cinemaid = cinema_id;
     }
 
-    public Integer getMovie_id() {
-        return movie_id;
+    public Integer getMovieid() {
+        return movieid;
     }
 
-    public void setMovie_id(Integer movie_id) {
-        this.movie_id = movie_id;
+    public void setMovieid(Integer movie_id) {
+        this.movieid = movie_id;
     }
 
     public String getTime() {

@@ -12,6 +12,6 @@ import java.util.List;
 public interface MovieModel extends JpaRepository<MovieBean,Integer>{
     MovieBean findMovieById(Integer id);
     boolean existsMovieBeanByName(String name);
-    List<MovieBean> findAllByLabel(String label);
+    List<MovieBean> findAllBySort(String label);
 
 }

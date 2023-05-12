@@ -61,7 +61,7 @@ public class FriendService {
         }
         System.out.println(list2);
         for (String label : list2) {
-            list3.addAll(movieModel.findAllByLabel(label));
+            list3.addAll(movieModel.findAllBySort(label));
         }
 
         return list3;
