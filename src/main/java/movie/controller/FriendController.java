@@ -2,10 +2,10 @@ package movie.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import movie.dao.bean.FriendBean;
+import movie.dao.bean.InviteBean;
 import movie.dao.bean.MovieBean;
 import movie.dao.bean.UserBean;
 import movie.dao.model.FriendModel;
-import movie.dao.model.InviteModel;
 import movie.dao.model.UserModel;
 import movie.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,27 +82,19 @@ public class FriendController {
         Integer id = Integer.valueOf(JWT.parseUserIDFromToken(token));
         Integer friendid = request.getInteger("friendid");
         JSONObject response = new JSONObject();
-
-        if (phone.equals("")) {
+        if (id.equals(0)) {
             response.put("msg", "token wrong!");
             return response.toString();
         }
-        if (!friendService.checkPhone(phone2)) {
+        if (friendService.findByUseridAndFriend(id, friendid) == null) {
             response.put("msg", "phone is not exist!");
             return response.toString();
         }
         //判断是否已经加了好友
-        List<UserBean> list2 = friendService.getFriendList2(phone);
-        List<UserBean> list1 = friendService.getFriendList1(phone);
-        list2.addAll(list1);
-        for (UserBean u : list2) {
-            if (phone2.equals(u.getPhone())) {
-                friendService.delFriend(phone, phone2);
-                response.put("msg", "delete success!");
-                return response.toString();
-            }
-        }
-        response.put("msg", "no this friend!");
+
+        friendService.delFriend(id, friendid);
+        friendService.delFriend(friendid, id);
+        response.put("msg", "delete success!");
         return response.toString();
     }
 
@@ -112,15 +104,11 @@ public class FriendController {
         String token = request.getString("token");
         Integer id = Integer.valueOf(JWT.parseUserIDFromToken(token));
         JSONObject response = new JSONObject();
-        if (phone.equals("")) {
+        if (id.equals(0)) {
             response.put("msg", "token wrong!");
             return response.toString();
         }
-        List<UserBean> list2 = friendService.getFriendList2(phone);
-        List<UserBean> list1 = friendService.getFriendList1(phone);
-        list2.addAll(list1);
-        System.out.println(list2);
-        response.put("list", list2);
+        response.put("list", friendService.getFriendList(id));
         response.put("msg", "ok");
         return response.toString();
     }
@@ -131,11 +119,11 @@ public class FriendController {
         String token = request.getString("token");
         Integer id = Integer.valueOf(JWT.parseUserIDFromToken(token));
         JSONObject response = new JSONObject();
-        if (phone.equals("")) {
+        if (id.equals(0)) {
             response.put("msg", "token wrong!");
             return response.toString();
         }
-        friendService.creatInvite(phone, request.getString("receiver"));
+        friendService.creatInvite(id, Integer.valueOf(request.getString("receiver")));
         response.put("msg", "ok");
         return response.toString();
     }
@@ -146,15 +134,11 @@ public class FriendController {
         String token = request.getString("token");
         Integer id = Integer.valueOf(JWT.parseUserIDFromToken(token));
         JSONObject response = new JSONObject();
-        if (phone.equals("")) {
+        if (id.equals(0)) {
             response.put("msg", "token wrong!");
             return response.toString();
         }
-        System.out.println(phone);
-        System.out.println(phone);
-        List<InviteModel.Invite> list = friendService.getInvite(phone);
-        System.out.println(list);
-        System.out.println(list);
+        List<InviteBean> list = friendService.getInviteList(id);
         response.put("list", list);
         response.put("msg", "ok");
         return response.toString();
@@ -167,20 +151,17 @@ public class FriendController {
         Integer id = Integer.valueOf(JWT.parseUserIDFromToken(token));
         JSONObject response = new JSONObject();
         String flag = request.getString("flag");
-        String inviter = request.getString("inviter");
-        if (phone.equals("")) {
+        Integer inviter = Integer.valueOf(request.getString("inviter"));
+        if (id.equals(0)) {
             response.put("msg", "token wrong!");
             return response.toString();
         }
         if (flag.equals("")) {
             response.put("msg", "已拒绝邀约");
-            friendService.delInviteByPhone(inviter, phone);
+            friendService.delInvite(id,inviter);
             return response.toString();
         }
-        List<MovieBean> list = friendService.getMovieBylabel(inviter, phone);
-        System.out.println(phone);
-        System.out.println(inviter);
-        System.out.println(list);
+        List<MovieBean> list = friendService.getMovieBylabel(inviter,id);
         response.put("list", list);
         response.put("msg", "ok");
         return response.toString();

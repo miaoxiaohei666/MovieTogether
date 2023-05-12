@@ -31,6 +31,15 @@ public class FriendService {
         inviteModel.save(inviteBean);
     }
 
+    public List<InviteBean> getInviteList(Integer user_id){
+        return inviteModel.findByReceiver(user_id);
+    }
+
+    public void delInvite(Integer user_id, Integer friend_id) {
+        List<InviteBean> list = inviteModel.findByInviterAndReceiver(user_id,friend_id);
+        inviteModel.deleteAll(list);
+    }
+
     public List<MovieBean> getMovieBylabel(Integer inviter, Integer receiver) {
 
         UserBean user1 = userModel.getUserBeanById(inviter);
@@ -87,6 +96,10 @@ public class FriendService {
 
     public void delFriend(Integer user_id, Integer friend_id) {
         friendModel.delete(friendModel.findByUseridAndFriendid(user_id,friend_id));
+    }
+
+    public FriendBean findByUseridAndFriend(Integer user_id, Integer friend_id){
+       return friendModel.findByUseridAndFriendid(user_id,friend_id);
     }
 
 }

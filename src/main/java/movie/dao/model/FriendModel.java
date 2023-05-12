@@ -11,6 +11,4 @@ public interface FriendModel extends JpaRepository<FriendBean,Integer>{
     List<FriendBean> findByFriendid(Integer friendid);
 
     FriendBean findByUseridAndFriendid(Integer userid, Integer friendid);
-
-
 }
