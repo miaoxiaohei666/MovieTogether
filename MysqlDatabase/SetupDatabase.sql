@@ -7,6 +7,7 @@ drop table if exists screenings;
 drop table if exists cinemas;
 drop table if exists friends;
 drop table if exists invites;
+drop table if exists chats;
 
 -- ----------------------
 -- table users
