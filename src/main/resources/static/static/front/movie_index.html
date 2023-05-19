@@ -8,23 +8,26 @@
     <title>电影首页</title>
     <script src="jquery.min.js"></script>
     <style>
+        body {
+            margin: 0;
+        }
         * {
             margin: 0px;
             padding: 0px;
         }
 
         .top {
-            width: 100%;
-            height: 50px;
-            background-color: rgb(56, 56, 56);
             position: fixed;
+            width: 100%;
+            height: 80px;
+            background-color: rgb(51, 51, 51, 86%);
         }
 
         .icon {
-            width: 40px;
+            width: 50px;
             position: relative;
-            left: 20px;
-            top: 5px;
+            left: 30px;
+            top: 15px;
         }
 
         .tit {
@@ -32,10 +35,98 @@
             color: white;
             font-size: 30px;
             position: relative;
-            left: 20px;
-            top: -5px;
-            font-family: 华文行楷;
+            left: 40px;
+            font-family: 华文楷体;
         }
+
+        .nav{
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            background-color: rgb(255, 255, 255, 70%);
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width:250px;
+        }
+
+        .li {
+            position: relative;
+            height: 60px;
+            line-height: 60px;
+            padding-left: 25px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .li2{
+            height: 50px;
+            line-height: 50px;
+            padding-left: 55px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .be{
+            width: 20px;
+            top: 20px;
+            margin-right: 8px;
+        }
+
+        /*.jian{*/
+        /*    width: 20px;*/
+
+        /*}*/
+
+        /*.nav ul li ul {*/
+        /*    display: none;*/
+        /*    position: absolute;*/
+        /*}*/
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /*!* 让二级菜单在点击一级菜单项时才会出现 *!*/
+        /*.nav ul li:hover ul {*/
+        /*    display: block;*/
+        /*}*/
+
+        /*!* 清除二级菜单的浮动 *!*/
+        /*.nav ul li ul li {*/
+        /*    float: none;*/
+        /*    !*width: 100px;*!*/
+        /*    background: lightskyblue;*/
+        /*}*/
+
+        .content {
+            position: fixed;
+            top: 81px;
+            right: 0;
+            bottom: 0;
+            left: 251px;
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        /*a*/
+        /*{*/
+        /*    display:block;*/
+        /*    width:250px;*/
+        /*    background-color: rgb(255, 255, 255, 70%);*/
+        /*}*/
 
         .head1 {
             position: relative;
@@ -131,15 +222,15 @@
             border: 0px;
         }
 
-        .main {
-            width: 1000px;
-            margin: 0 auto;
-            height: 100vh;
-            position: relative;
-            opacity: 0.8;
-            z-index: 0;
-            top: 110px;
-        }
+        /*.main {*/
+        /*    width: 1000px;*/
+        /*    margin: 0 auto;*/
+        /*    height: 100vh;*/
+        /*    position: relative;*/
+        /*    opacity: 0.8;*/
+        /*    z-index: 0;*/
+        /*    top: 110px;*/
+        /*}*/
 
         .zb {
             width: 210px;
@@ -169,57 +260,97 @@
 
 <body>
 <div>
-    <div style="z-index: 100;">
-        <div class="top">
-            <img class="icon" src="imags/电影(2).png">
-            <b class="tit">一起看电影吧</b>
+<!--    头-->
+    <div class="top">
+        <img class="icon" src="imags/riFill-movie-2-fill.svg">
+        <b class="tit">一起看电影吧</b>
+    </div>
+<!--    背景-->
+    <div>
+        <img src="imags/back.jpg" class="back" height="100%" width="100%"
+             style="z-index: -1; position: fixed; opacity: 1.0;"/>
+    </div>
+    <!--    背景-->
+    <div>
+        <img src="imags/back.jpg" class="back" height="100%" width="100%"
+             style="z-index: -1; position: fixed; opacity: 1.0;"/>
+    </div>
+
+    <div class="main">
+
+        <div class="nav">
+            <ul>
+                <li class="li">
+                        <img src="imags/riLine-film-line(1)@1x.png" class="be">
+                        <a href="movie_index.html" style="color: #4095E5">热映电影</a>
+                </li>
+                <li class="li2" id="0" style="color: #4095E5" onclick="window.location.reload()">全部</li>
+                <li class="li2" id="1">喜剧片</li>
+                <li class="li2" id="2">情感片</li>
+                <li class="li2" id="3">动作片</li>
+                <li class="li2" id="4">悬疑片</li>
+                <li class="li2" id="5">科幻片</li>
+                <li class="li2" id="6">恐怖片</li>
+                <li class="li">
+                    <img src="imags/ze-friends-o@1x.png" class="be">
+                    <a href="">用户列表</a>
+                </li>
+                <li class="li">
+                    <img src="imags/arcoDesign-user-add@1x.png" class="be">
+                    <a href="">好友列表</a>
+                </li>
+                <li class="li">
+                    <img src="imags/ze-envelop-o@1x.png" class="be">
+                    <a href="">我的邀约</a>
+                </li>
+                <li class="li">
+                    <img src="imags/iconPark-user@1x.png" class="be">
+                    <a href="">个人主页</a>
+                </li>
+            </ul>
         </div>
-        <div>
-            <img src="imags/背景.jpg" class="back" height="100%" width="100%"
-                 style="z-index: -1; position: fixed; opacity: 0.9;"/>
+
+        <div class="main">
+<!--            -->
+<!--            世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。 世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。 世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。 世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。-->
+<!--        -->
         </div>
     </div>
 
 
-    <p>
-        <b class="head1">分类</b>
-
-        <button class="btn1" type="button" id="1">喜剧</button>&nbsp;
-        <button type="button" class="btn1" id="2">爱情</button>&nbsp;
-        <button type="button" class="btn1" id="3">恐怖</button>&nbsp;
-        <button type="button" class="btn1" id="4">悬疑</button>&nbsp;
-        <button type="button" class="btn1" id="5">动作</button>&nbsp;
-        <button type="button" class="btn1" id="6">剧情</button>&nbsp;
-        <button type="button" class="btn1" id="7">科幻</button>&nbsp;
-
-        <button type="button" class="again" onclick="window.location.reload()">重置</button>
-        <button type="button" class="me" onclick="location.href='me.html'">个人主页</button>
-        <button type="button" class="friend" onclick="location.href='friend_list.html'">好友列表</button>
-    </p>
 
 
-    <p>
-        <b class="head2">关键词</b>
-        <button type="button" class="btn2">电影</button>&nbsp;
-        <button type="button" class="btn3">用户</button>
-    </p>
+
+
+
+<!--    <p>-->
+<!--        <b class="head1">分类</b>-->
+
+<!--        <button class="btn1" type="button" id="1">喜剧</button>&nbsp;-->
+<!--        <button type="button" class="btn1" id="2">爱情</button>&nbsp;-->
+<!--        <button type="button" class="btn1" id="3">恐怖</button>&nbsp;-->
+<!--        <button type="button" class="btn1" id="4">悬疑</button>&nbsp;-->
+<!--        <button type="button" class="btn1" id="5">动作</button>&nbsp;-->
+<!--        <button type="button" class="btn1" id="6">剧情</button>&nbsp;-->
+<!--        <button type="button" class="btn1" id="7">科幻</button>&nbsp;-->
+
+<!--        <button type="button" class="again" onclick="window.location.reload()">重置</button>-->
+<!--        <button type="button" class="me" onclick="location.href='me.html'">个人主页</button>-->
+<!--        <button type="button" class="friend" onclick="location.href='friend_list.html'">好友列表</button>-->
+<!--    </p>-->
+
+
+<!--    <p>-->
+<!--        <b class="head2">关键词</b>-->
+<!--        <button type="button" class="btn2">电影</button>&nbsp;-->
+<!--        <button type="button" class="btn3">用户</button>-->
+<!--    </p>-->
 </div>
 
 <div class="main">
 </div>
 
 <script>
-    var flag1 = 1;
-    var flag2 = 1;
-    var flag3 = 1;
-    var flag4 = 1;
-
-    var flag5 = 1;
-
-    var flag6 = 1;
-    var flag7 = 1;
-    var flag8 = 1;
-
     async function Fetch(path, body) {
         return await fetch("http://127.0.0.1:8080" + path, {
             method: 'POST',
@@ -232,6 +363,7 @@
         })
     }
 
+   // 展示电影列表的函数
     function st() {
         Fetch('/movie/all', JSON.stringify({}))
             .then(res => {
@@ -239,20 +371,31 @@
                 msg = res.msg
                 var main = document.querySelector(".main");
                 for (let i = 0; i < list.length; i++) {
+                    // 创建一个大框和图片框
                     var div = document.createElement('div');
                     var img = document.createElement('img');
+                    // 给img它的src
                     img.src = list[i].cover
+                    // 创建名字框
                     var b = document.createElement('b')
+                    // 图片的class
                     img.className = "movie"
+                    // 给名字框填充名字内容
                     b.innerHTML = list[i].name
+                    // 名字的颜色
                     b.style.color = "white"
+                    // 把图片框放到div大框内
                     div.appendChild(img);
+                    // 创建空格
                     var br = document.createElement('br')
+                    // 把空格和名字分别放到div框内
                     div.appendChild(br);
                     div.appendChild(b);
+                    // 空格框的class
                     div.className = "zb";
+                    // 把div放到main里面
                     main.appendChild(div);
-                    // console.log(div)
+                    // 点击电影的div框进入详情页面
                     div.onclick = function () {
                         localStorage.setItem('movie_id', list[i].id)
 
@@ -266,6 +409,7 @@
 
     st();
 
+    // 删除列表原有的信息，便于创建后面的信息
     function deleteChild() {
         var e = document.querySelector(".main");
         var first = e.firstElementChild;
@@ -275,8 +419,9 @@
         }
     }
 
-    var label;
 
+   var label;
+    // 获取某一标签的电影
     function search() {
         Fetch('/movie/label', JSON.stringify({
             label: label
@@ -284,6 +429,7 @@
             .then(res => {
                 list = res.list
                 msg = res.msg
+                // 展示某一标签电影列表
                 var main = document.querySelector(".main");
                 for (let i = 0; i < list.length; i++) {
                     var div = document.createElement('div');
@@ -298,7 +444,7 @@
                     div.appendChild(b);
                     div.className = "zb";
                     main.appendChild(div);
-                    div.click(function () {
+                    div.onclick(function () {
                         localStorage.setItem('movie_id', list[i].id)
                         self.location = 'movie_detail.html'
 
@@ -308,9 +454,20 @@
             })
     }
 
+    var flag1 = 1;
+    var flag2 = 1;
+    var flag3 = 1;
+    var flag4 = 1;
+    var flag5 = 1;
+    var flag6 = 1;
+    var flag7 = 1;
+   // 根据标签寻找电影
     function search1() {
+        // 检验是否有点击标签
         var fl = 0;
+        // 删除原有的列表
         deleteChild();
+
         if (flag1 == 0) {
             fl = 1;
             label = "喜剧";
@@ -318,12 +475,12 @@
         }
         if (flag2 == 0) {
             fl = 1;
-            label = "爱情";
+            label = "情感";
             search();
         }
         if (flag3 == 0) {
             fl = 1;
-            label = "恐怖";
+            label = "动作";
             search();
         }
         if (flag4 == 0) {
@@ -331,19 +488,14 @@
             label = "悬疑";
             search();
         }
-        if (flag6 == 0) {
-            fl = 1;
-            label = "动作";
-            search();
-        }
-        if (flag7 == 0) {
-            fl = 1;
-            label = "剧情";
-            search();
-        }
-        if (flag8 == 0) {
+        if (flag5 == 0) {
             fl = 1;
             label = "科幻";
+            search();
+        }
+        if (flag6 == 0) {
+            fl = 1;
+            label = "恐怖";
             search();
         }
         if (fl == 0) {
@@ -351,227 +503,228 @@
         }
     }
 
-    var map1 = new Map();
+    // 用户列表
+    // var map1 = new Map();
+    //
+    // function search3() {
+    //     Fetch('/user/label', JSON.stringify({
+    //         label: label,
+    //         address: localStorage.getItem("address")
+    //     }))
+    //         .then(res => {
+    //             console.log(localStorage.getItem("address"))
+    //             list = res.list
+    //             console.log(list);
+    //             var main = document.querySelector(".main");
+    //
+    //             for (let i = 0; i < list.length; i++) {
+    //                 if (map1.has(list[i].name) || list[i].address != localStorage.getItem("address"))
+    //                     continue;
+    //                 else
+    //                     map1.set(list[i].name, "1");
+    //                 var b = document.createElement('b');
+    //                 b.className = "b4"
+    //                 b.innerHTML = list[i].name + "<br><br>" + list[i].age + "岁    " + list[i].sex + "<br><br>"
+    //                     + "武汉市 " + list[i].address;
+    //                 main.appendChild(b);
+    //
+    //                 b.onclick=function () {
+    //                     //添加好友
+    //                     token=localStorage.getItem("token")
+    //
+    //                     Fetch('/friend/add', JSON.stringify({
+    //                         token: token,
+    //                         phone: list[i].phone
+    //                     }))
+    //                         .then(res => {
+    //                             msg = res.msg
+    //                             if(msg == "already add!"){
+    //                                 alert('请勿重复加好友！')
+    //                             }
+    //                             if(msg == "ok"){
+    //                                 alert('您已成功加他为好友')
+    //                             }
+    //                         })
+    //                 }
+    //             }
+    //         })
+    // }
 
-    function search3() {
-        Fetch('/user/label', JSON.stringify({
-            label: label,
-            address: localStorage.getItem("address")
-        }))
-            .then(res => {
-                console.log(localStorage.getItem("address"))
-                list = res.list
-                console.log(list);
-                var main = document.querySelector(".main");
+   // 搜寻用户
+    // function search2() {
+    //     var fl = 0;
+    //     deleteChild();
+    //     if (flag1 == 0) {
+    //         fl = 1;
+    //         label = "喜剧";
+    //         search3();
+    //     }
+    //     if (flag2 == 0) {
+    //         fl = 1;
+    //         label = "爱情";
+    //         search3();
+    //     }
+    //     if (flag3 == 0) {
+    //         fl = 1;
+    //         label = "恐怖";
+    //         search3();
+    //     }
+    //     if (flag4 == 0) {
+    //         fl = 1;
+    //         label = "悬疑";
+    //         search3();
+    //     }
+    //     if (flag6 == 0) {
+    //         fl = 1;
+    //         label = "动作";
+    //         search3();
+    //     }
+    //     if (flag7 == 0) {
+    //         fl = 1;
+    //         label = "剧情";
+    //         search3();
+    //     }
+    //     if (flag8 == 0) {
+    //         fl = 1;
+    //         label = "科幻";
+    //         search3();
+    //     }
+    //     if (fl == 0) {
+    //         label = "喜剧"
+    //         search3();
+    //         label = "爱情"
+    //         search3();
+    //         label = "恐怖"
+    //         search3();
+    //         label = "悬疑"
+    //         search3();
+    //         label = "动作"
+    //         search3();
+    //         label = "剧情"
+    //         search3();
+    //         label = "科幻"
+    //         search3();
+    //     }
+    //     map1.clear();
+    // }
 
-                for (let i = 0; i < list.length; i++) {
-                    if (map1.has(list[i].name) || list[i].address != localStorage.getItem("address"))
-                        continue;
-                    else
-                        map1.set(list[i].name, "1");
-                    var b = document.createElement('b');
-                    b.className = "b4"
-                    b.innerHTML = list[i].name + "<br><br>" + list[i].age + "岁    " + list[i].sex + "<br><br>"
-                        + "武汉市 " + list[i].address;
-                    main.appendChild(b);
+    // let token = localStorage.getItem("token")
 
-                    b.onclick=function () {
-                        //添加好友
-                        token=localStorage.getItem("token")
+    // Fetch('/user/info', JSON.stringify({
+    //     token: token
+    // }))
+    //     .then(res => {
+    //         msg = res.msg
+    //         localStorage.setItem("address",res.addr)
+    //         // console.log(res.msg)
+    //         // console.log(res.addr)
+    //
+    //     })
 
-                        Fetch('/friend/add', JSON.stringify({
-                            token: token,
-                            phone: list[i].phone
-                        }))
-                            .then(res => {
-                                msg = res.msg
-                                if(msg == "already add!"){
-                                    alert('请勿重复加好友！')
-                                }
-                                if(msg == "ok"){
-                                    alert('您已成功加他为好友')
-                                }
-                            })
-                    }
-                }
-            })
-    }
+    // $(".btn3").click(function () {
+    //     $(this).css('color', 'white');
+    //     $(this).css('background-color', 'rgb(96, 164, 236)');
+    //     $(".btn2").css('background-color', 'rgb(230,230,230)');
+    //     $(".btn2").css('color', 'black');
+    //     flag5 = 0;
+    //     search2();
+    // })
+    // $(".btn2").click(function () {
+    //     $(this).css('color', 'white');
+    //     $(this).css('background-color', 'rgb(96, 164, 236)');
+    //     $(".btn3").css('background-color', 'rgb(230,230,230)');
+    //     $(".btn3").css('color', 'black');
+    //     flag5 = 1;
+    //     search1();
+    // })
 
-    function search2() {
-        var fl = 0;
-        deleteChild();
-        if (flag1 == 0) {
-            fl = 1;
-            label = "喜剧";
-            search3();
-        }
-        if (flag2 == 0) {
-            fl = 1;
-            label = "爱情";
-            search3();
-        }
-        if (flag3 == 0) {
-            fl = 1;
-            label = "恐怖";
-            search3();
-        }
-        if (flag4 == 0) {
-            fl = 1;
-            label = "悬疑";
-            search3();
-        }
-        if (flag6 == 0) {
-            fl = 1;
-            label = "动作";
-            search3();
-        }
-        if (flag7 == 0) {
-            fl = 1;
-            label = "剧情";
-            search3();
-        }
-        if (flag8 == 0) {
-            fl = 1;
-            label = "科幻";
-            search3();
-        }
-        if (fl == 0) {
-            label = "喜剧"
-            search3();
-            label = "爱情"
-            search3();
-            label = "恐怖"
-            search3();
-            label = "悬疑"
-            search3();
-            label = "动作"
-            search3();
-            label = "剧情"
-            search3();
-            label = "科幻"
-            search3();
-        }
-        map1.clear();
-    }
-
-    let token = localStorage.getItem("token")
-    Fetch('/user/info', JSON.stringify({
-        token: token
-    }))
-        .then(res => {
-            msg = res.msg
-            localStorage.setItem("address",res.addr)
-            // console.log(res.msg)
-            // console.log(res.addr)
-
-        })
-    $(".btn3").click(function () {
-        $(this).css('color', 'white');
-        $(this).css('background-color', 'rgb(96, 164, 236)');
-        $(".btn2").css('background-color', 'rgb(230,230,230)');
-        $(".btn2").css('color', 'black');
-        flag5 = 0;
-        search2();
-    })
-    $(".btn2").click(function () {
-        $(this).css('color', 'white');
-        $(this).css('background-color', 'rgb(96, 164, 236)');
-        $(".btn3").css('background-color', 'rgb(230,230,230)');
-        $(".btn3").css('color', 'black');
-        flag5 = 1;
-        search1();
-    })
     $("#1").click(function () {
         if (flag1 == 1) {
-            $(this).css("background", "lightblue");
+            $(this).css("color", "#4095E5");
+            $("#0").css("color","black");
             flag1 = 0;
-        } else {
-            $(this).css("background", "rgb(230,230,230)");
+        }
+        else {
+            $(this).css("color", "black");
             flag1 = 1;
         }
-        if (flag5 == 1)
-            search1();
-        else
-            search2();
+        // if (flag7 == 1)
+        //     search1();
+        // else
+        //     search2();
     })
     $("#2").click(function () {
         if (flag2 == 1) {
-            $(this).css("background", "lightblue");
+            $(this).css("color", "#4095E5");
+            $("#0").css("color","black");
             flag2 = 0;
         } else {
-            $(this).css("background", "rgb(230,230,230)");
+            $(this).css("color", "black");
             flag2 = 1;
         }
-        if (flag5 == 1)
-            search1();
-        else
-            search2();
+        // if (flag7 == 1)
+        //     search1();
+        // else
+        //     search2();
     })
     $("#3").click(function () {
         if (flag3 == 1) {
-            $(this).css("background", "lightblue");
+            $(this).css("color", "#4095E5");
+            $("#0").css("color","black");
             flag3 = 0;
         } else {
-            $(this).css("background", "rgb(230,230,230)");
+            $(this).css("color", "black");
             flag3 = 1;
         }
-        if (flag5 == 1)
-            search1();
-        else
-            search2();
+        // if (flag7 == 1)
+        //     search1();
+        // else
+        //     search2();
     })
     $("#4").click(function () {
         if (flag4 == 1) {
-            $(this).css("background", "lightblue");
+            $(this).css("color", "#4095E5");
+            $("#0").css("color","black");
             flag4 = 0;
         } else {
-            $(this).css("background", "rgb(230,230,230)");
+            $(this).css("color", "black");
             flag4 = 1;
         }
-        if (flag5 == 1)
-            search1();
-        else
-            search2();
+        // if (flag7 == 1)
+        //     search1();
+        // else
+        //     search2();
     })
     $("#5").click(function () {
-        if (flag6 == 1) {
-            $(this).css("background", "lightblue");
-            flag6 = 0;
+        if (flag5 == 1) {
+            $(this).css("color", "#4095E5");
+            $("#0").css("color","black");
+            flag5 = 0;
         } else {
-            $(this).css("background", "rgb(230,230,230)");
-            flag6 = 1;
+            $(this).css("color", "black");
+            flag5= 1;
         }
-        if (flag5 == 1)
-            search1();
-        else
-            search2();
+        // if (flag7 == 1)
+        //     search1();
+        // else
+        //     search2();
     })
     $("#6").click(function () {
-        if (flag7 == 1) {
-            $(this).css("background", "lightblue");
-            flag7 = 0;
+        if (flag6 == 1) {
+            $(this).css("color", "#4095E5");
+            $("#0").css("color","black");
+            flag6 = 0;
         } else {
-            $(this).css("background", "rgb(230,230,230)");
-            flag7 = 1;
+            $(this).css("color", "black");
+            flag6 = 1;
         }
-        if (flag5 == 1)
+        if (flag7 == 1)
             search1();
         else
             search2();
     })
-    $("#7").click(function () {
-        if (flag8 == 1) {
-            $(this).css("background", "lightblue");
-            flag8 = 0;
-        } else {
-            $(this).css("background", "rgb(230,230,230)");
-            flag8 = 1;
-        }
-        if (flag5 == 1)
-            search1();
-        else
-            search2();
-    })
+
+
 </script>
 </body>
 
