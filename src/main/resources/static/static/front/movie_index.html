@@ -175,7 +175,7 @@
             .then(res => {
                 var list = res.list
                 msg = res.msg
-                var main = document.querySelector(".main");
+                var main = document.querySelector(".list");
                 /*    position: fixed;*/
                 /*    top: 81px;*/
                 /*    right: 0;*/
@@ -188,12 +188,15 @@
                 main.style.right = "0"
                 main.style.bottom = "0"
                 main.style.overflowY = "auto"
+                main.style.display = "flex"
+                main.style.justifyContent = "center"
+
                 var divz = document.createElement('div');
                 divz.style.display = "flex"
                 divz.style.flexDirection = "row"
                 divz.style.flexWrap = "wrap"
-                // divz.style.marginLeft = "251px"
-                // divz.style.marginTop = "81px"
+                divz.style.justifyContent = "center"
+
                 for (let i = 0; i < list.length; i++) {
                     // 创建一个大框和图片框
                     var div = document.createElement('div');
@@ -202,12 +205,12 @@
                     div.style.alignItems = "center"
                     div.style.marginRight = "20px"
                     div.style.marginBottom = "20px"
-                    div.style.width = "280px"
+                    div.style.width = "230px"
                     var img = document.createElement('img');
                     // 给img它的src
                     img.src = list[i].cover
                     img.style.height = "300px"
-                    img.style.width = "200px"
+                    img.style.width = "230px"
                     // 图片的class
                     img.className = "movie"
 
@@ -218,9 +221,6 @@
                     div1.innerHTML = list[i].name
                     div1.style.color = "white"
                     div1.style.fontSize = "20px"
-                    // b.innerHTML = list[i].name
-                    // 名字的颜色
-                    // b.style.color = "white"
 
                     // 把图片框放到div大框内
                     div.appendChild(img);
