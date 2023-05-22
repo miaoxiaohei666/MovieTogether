@@ -176,12 +176,7 @@
                 var list = res.list
                 msg = res.msg
                 var main = document.querySelector(".list");
-                /*    position: fixed;*/
-                /*    top: 81px;*/
-                /*    right: 0;*/
-                /*    bottom: 0;*/
-                /*    left: 251px;*/
-                /*    overflow-y: auto;*/
+
                 main.style.position = "fixed"
                 main.style.top = "81px"
                 main.style.left = "251px"
@@ -203,14 +198,15 @@
                     div.style.display = "flex"
                     div.style.flexDirection = "column"
                     div.style.alignItems = "center"
-                    div.style.marginRight = "20px"
-                    div.style.marginBottom = "20px"
-                    div.style.width = "230px"
+                    div.style.marginRight = "25px"
+                    div.style.marginBottom = "30px"
+                    div.style.width = "250px"
+                    div.style.backgroundColor = "rgb(255, 255, 255, 70%)"
                     var img = document.createElement('img');
                     // 给img它的src
                     img.src = list[i].cover
                     img.style.height = "300px"
-                    img.style.width = "230px"
+                    img.style.width = "250px"
                     // 图片的class
                     img.className = "movie"
 
@@ -219,7 +215,7 @@
                     // var b = document.createElement('b')
                     // 给名字框填充名字内容
                     div1.innerHTML = list[i].name
-                    div1.style.color = "white"
+                    div1.style.color = "black"
                     div1.style.fontSize = "20px"
 
                     // 把图片框放到div大框内
