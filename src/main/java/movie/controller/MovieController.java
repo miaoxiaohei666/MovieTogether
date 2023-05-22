@@ -1,7 +1,6 @@
 package movie.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import movie.dao.bean.CinemaBean;
 import movie.dao.bean.MovieBean;
 import movie.dao.bean.ScreeningBean;
 import movie.dao.model.CinemaModel;
