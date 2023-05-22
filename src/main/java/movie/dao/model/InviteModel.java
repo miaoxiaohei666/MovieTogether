@@ -1,12 +1,8 @@
 package movie.dao.model;
 
 import movie.dao.bean.InviteBean;
-
-import movie.dao.bean.MovieBean;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
