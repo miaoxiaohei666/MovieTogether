@@ -175,16 +175,16 @@
             .then(res => {
                 var list = res.list
                 msg = res.msg
-                var main = document.querySelector(".list");
+                var tbody = document.querySelector(".list");
 
-                main.style.position = "fixed"
-                main.style.top = "81px"
-                main.style.left = "251px"
-                main.style.right = "0"
-                main.style.bottom = "0"
-                main.style.overflowY = "auto"
-                main.style.display = "flex"
-                main.style.justifyContent = "center"
+                tbody.style.position = "fixed"
+                tbody.style.top = "81px"
+                tbody.style.left = "251px"
+                tbody.style.right = "0"
+                tbody.style.bottom = "0"
+                tbody.style.overflowY = "auto"
+                tbody.style.display = "flex"
+                tbody.style.justifyContent = "center"
 
                 var divz = document.createElement('div');
                 divz.style.display = "flex"
@@ -241,7 +241,7 @@
                     }
                     //list.name + "   " + list.age + "   " + list.sex
                 }
-                main.appendChild(divz);
+                tbody.appendChild(divz);
             })
     }
 
@@ -249,7 +249,7 @@
 
     // 删除列表原有的信息，便于创建后面的信息
     function deleteChild() {
-        var e = document.querySelector(".main");
+        var e = document.querySelector(".list");
         var first = e.firstElementChild;
         while (first) {
             first.remove();
@@ -265,30 +265,76 @@
             label: label
         }))
             .then(res => {
-                list = res.list
+
+                var list = res.list
                 msg = res.msg
-                // 展示某一标签电影列表
-                var main = document.querySelector(".main");
+                var tbody1 = document.querySelector(".list");
+
+                tbody1.style.position = "fixed"
+                tbody1.style.top = "81px"
+                tbody1.style.left = "251px"
+                tbody1.style.right = "0"
+                tbody1.style.bottom = "0"
+                tbody1.style.overflowY = "auto"
+                tbody1.style.display = "flex"
+                tbody1.style.justifyContent = "center"
+
+                var divz = document.createElement('div');
+                divz.style.display = "flex"
+                divz.style.flexDirection = "row"
+                divz.style.flexWrap = "wrap"
+                divz.style.justifyContent = "center"
+
                 for (let i = 0; i < list.length; i++) {
+                    // 创建一个大框和图片框
                     var div = document.createElement('div');
+                    div.style.display = "flex"
+                    div.style.flexDirection = "column"
+                    div.style.alignItems = "center"
+                    div.style.marginRight = "25px"
+                    div.style.marginBottom = "30px"
+                    div.style.width = "250px"
+                    div.style.backgroundColor = "rgb(255, 255, 255, 70%)"
                     var img = document.createElement('img');
+                    // 给img它的src
                     img.src = list[i].cover
-                    var b = document.createElement('b')
+                    img.style.height = "300px"
+                    img.style.width = "250px"
+                    // 图片的class
                     img.className = "movie"
-                    b.innerHTML = list[i].name
+
+                    // 创建名字框
+                    var div1 = document.createElement('div')
+                    // var b = document.createElement('b')
+                    // 给名字框填充名字内容
+                    div1.innerHTML = list[i].name
+                    div1.style.color = "black"
+                    div1.style.fontSize = "20px"
+
+                    // 把图片框放到div大框内
                     div.appendChild(img);
+                    // 创建空格
                     var br = document.createElement('br')
+                    var br1 = document.createElement('br')
+                    // 把换行和名字分别放到div框内
                     div.appendChild(br);
-                    div.appendChild(b);
+                    div.appendChild(div1);
+                    div.appendChild(br1);
+                    // 空格框的class
                     div.className = "zb";
-                    main.appendChild(div);
-                    div.onclick(function () {
+                    div.style.border = "#CCCCCC solid 1px"
+                    // 把div放到main里面
+                    divz.appendChild(div)
+                    // 点击电影的div框进入详情页面
+                    div.onclick = function () {
                         localStorage.setItem('movie_id', list[i].id)
+
                         self.location = 'movie_detail.html'
 
-
-                    })
+                    }
+                    //list.name + "   " + list.age + "   " + list.sex
                 }
+                tbody1.appendChild(divz);
             })
     }
 
@@ -486,6 +532,7 @@
             $(this).css("color", "black");
             flag1 = 1;
         }
+        search1();
         // if (flag7 == 1)
         //     search1();
         // else
@@ -500,6 +547,7 @@
             $(this).css("color", "black");
             flag2 = 1;
         }
+        search1();
         // if (flag7 == 1)
         //     search1();
         // else
@@ -514,6 +562,7 @@
             $(this).css("color", "black");
             flag3 = 1;
         }
+        search1();
         // if (flag7 == 1)
         //     search1();
         // else
@@ -528,6 +577,7 @@
             $(this).css("color", "black");
             flag4 = 1;
         }
+        search1();
         // if (flag7 == 1)
         //     search1();
         // else
@@ -542,6 +592,7 @@
             $(this).css("color", "black");
             flag5= 1;
         }
+        search1();
         // if (flag7 == 1)
         //     search1();
         // else
@@ -556,6 +607,7 @@
             $(this).css("color", "black");
             flag6 = 1;
         }
+        search1();
         // if (flag7 == 1)
         //     search1();
         // else
