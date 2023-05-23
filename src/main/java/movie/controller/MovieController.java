@@ -57,7 +57,8 @@ public class MovieController {
         response.put("movie", movie);
         response.put("session", screening);
         response.put("cinema", cinemaBeanList);
-        return response.toString();
+        String s = response.toString();
+        return s;
     }
 
     //获取某一标签的所有电影信息

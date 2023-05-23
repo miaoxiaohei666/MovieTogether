@@ -182,6 +182,8 @@
         id: id
     }))
         .then(res => {
+            var list1 = res.session
+            var list2 = res.cinema
             console.log(res)
             msg = res.msg
             if (msg == "电影信息不存在！") {
@@ -197,7 +199,9 @@
                 document.getElementById('type').innerText = '类型：' + res.movie.sort
                 document.getElementById('detail').innerText = res.movie.description
                 document.getElementById('cover').src = res.movie.cover
-                document.getElementById('session').innerText=res.session
+                document.getElementById('session').innerText=res.movie.session
+
+
             }
 
 

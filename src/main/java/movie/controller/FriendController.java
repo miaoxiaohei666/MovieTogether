@@ -87,7 +87,7 @@ public class FriendController {
             return response.toString();
         }
         if (friendService.findByUseridAndFriend(id, friendid) == null) {
-            response.put("msg", "phone is not exist!");
+            response.put("msg", "student number is not exist!");
             return response.toString();
         }
         //判断是否已经加了好友

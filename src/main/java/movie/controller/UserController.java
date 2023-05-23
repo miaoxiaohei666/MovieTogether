@@ -67,6 +67,7 @@ public class UserController {
     @PostMapping(value = "/user/info")
     public String getInfo(@RequestBody JSONObject request) {
         Integer id = Integer.valueOf(JWT.parseUserIDFromToken(request.getString("token")));
+        System.out.println(request);
         JSONObject response = new JSONObject();
         if (id.equals(0)) {
             response.put("msg", "token wrong!");
@@ -85,7 +86,9 @@ public class UserController {
         userInfo.put("label2", user.getLabel2());
         userInfo.put("label3", user.getLabel3());
         response.put("data", userInfo);
+        System.out.println(user);
         return response.toString();
+
     }
 
     //通过学号获取用户信息
