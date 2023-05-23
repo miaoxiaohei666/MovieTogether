@@ -51,6 +51,7 @@ public class UserController {
             user.setNickname(request.getString("name"));
             user.setSex(request.getString("sex"));
             user.setAge(request.getInteger("age"));
+            user.setSchool(request.getString("school"));
             user.setLabel1(request.getString("label1"));
             user.setLabel2(request.getString("label2"));
             user.setLabel3(request.getString("label3"));
@@ -79,6 +80,7 @@ public class UserController {
         userInfo.put("name", user.getNickname());
         userInfo.put("sex", user.getSex());
         userInfo.put("age", user.getAge());
+        userInfo.put("school", user.getSchool());
         userInfo.put("label1", user.getLabel1());
         userInfo.put("label2", user.getLabel2());
         userInfo.put("label3", user.getLabel3());
@@ -102,6 +104,7 @@ public class UserController {
         userInfo.put("name", user.getNickname());
         userInfo.put("sex", user.getSex());
         userInfo.put("age", user.getAge());
+        userInfo.put("school", user.getSchool());
         userInfo.put("label1", user.getLabel1());
         userInfo.put("label2", user.getLabel2());
         userInfo.put("label3", user.getLabel3());
@@ -125,6 +128,7 @@ public class UserController {
         user.setNickname(request.getString("name"));
         user.setSex(request.getString("sex"));
         user.setAge(request.getInteger("age"));
+        user.setSchool(request.getString("school"));
         user.setLabel1(request.getString("label1"));
         user.setLabel2(request.getString("label2"));
         user.setLabel3(request.getString("label3"));
