@@ -138,7 +138,11 @@ public class FriendController {
             response.put("msg", "token wrong!");
             return response.toString();
         }
-        List<InviteBean> list = friendService.getInviteList(id);
+        List<InviteBean> idlist = friendService.getInviteList(id);
+        List<UserBean> list = new ArrayList<>();
+        for (InviteBean i:idlist){
+            list.add(userModel.getUserBeanById(i.getInviter()));
+        }
         response.put("list", list);
         response.put("msg", "ok");
         return response.toString();
