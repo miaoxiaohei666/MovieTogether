@@ -5,10 +5,10 @@
 
 spring:
   datasource:
-    name: movie
-    url: jdbc:mysql://127.0.0.1:3306/movie
+    name: movietogether
+    url: jdbc:mysql://127.0.0.1:3306/movietogether
     username: root
-    password: yyyy
+    password: 186267740
     driver-class-name: com.mysql.cj.jdbc.Driver
   #    swagger:
   #      enable: true

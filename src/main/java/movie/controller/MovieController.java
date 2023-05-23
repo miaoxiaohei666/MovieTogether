@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import util.JWT;
 
 import java.util.*;
 
@@ -52,7 +51,8 @@ public class MovieController {
         List<ScreeningBean> screening = movieService.getScreeningByMovieId(id);
         List<CinemaBean> cinemaBeanList = new ArrayList<>();
         for (ScreeningBean s:screening){
-            cinemaBeanList.add(movieService.getCinemaInfo(s.getCinemaid()));
+            CinemaBean a = movieService.getCinemaInfo(s.getCinemaid());
+            cinemaBeanList.add(a);
         }
         response.put("movie", movie);
         response.put("session", screening);

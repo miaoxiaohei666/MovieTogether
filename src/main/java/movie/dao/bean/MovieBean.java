@@ -1,5 +1,7 @@
 package movie.dao.bean;
 
+import javafx.scene.text.Text;
+
 import javax.persistence.*;
 
 
@@ -18,6 +20,15 @@ public class MovieBean {
     private String time;
     private String sort;
     private String cover;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getCover() {
         return cover;

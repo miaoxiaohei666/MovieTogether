@@ -192,14 +192,14 @@
             } else {
                 // console.log(res.movie.name)
                 console.log(res.movie)
-                console.log(res.movie)
+                console.log(res.session)
 
                 document.getElementById('name').innerText = res.movie.name
                 document.getElementById('time').innerText = '上映时间' + ' ' + res.movie.time
                 document.getElementById('type').innerText = '类型：' + res.movie.sort
                 document.getElementById('detail').innerText = res.movie.description
                 document.getElementById('cover').src = res.movie.cover
-                document.getElementById('session').innerText=res.movie.session
+                document.getElementById('session').innerText=res.session.time
 
 
             }

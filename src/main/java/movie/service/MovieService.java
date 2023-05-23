@@ -30,7 +30,7 @@ public class MovieService{
         return screeningModel.findAllByMovieid(movie_id);
     }
     public CinemaBean getCinemaInfo(Integer cinema_id) {
-        return cinemaModel.getById(cinema_id);
+        return cinemaModel.getCinemaBeanById(cinema_id);
     }
 
 }
