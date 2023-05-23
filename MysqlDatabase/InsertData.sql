@@ -139,7 +139,7 @@ VALUES ('武汉影城', '湖北省武汉市洪山区珞喻路123号'),
 -- ----------------------
 -- screenings data
 -- ----------------------
-INSERT INTO screenings (cinema_id, movie_id, time)
+INSERT INTO screenings (cinemaid, movieid, time)
 VALUES (1, 1, '2022-06-15 15:30:00'),
        (2, 1, '2022-06-15 18:00:00'),
        (5, 1, '2022-06-15 20:30:00'),
@@ -355,7 +355,7 @@ VALUES (1, 1, '2022-06-15 15:30:00'),
 -- friends data
 -- ----------------------
 -- 已经同意的好友请求
-INSERT INTO friends (user_id, friend_id)
+INSERT INTO friends (userid, friendid)
 VALUES (1, 2),
        (2, 1),
        (3, 4),
@@ -378,7 +378,7 @@ VALUES (1, 2),
        (20, 19);
 
 -- 还没有同意的好友请求
-INSERT INTO friends (user_id, friend_id)
+INSERT INTO friends (userid, friendid)
 VALUES (1, 3),
        (2, 4),
        (3, 5),

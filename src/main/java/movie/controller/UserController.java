@@ -48,7 +48,7 @@ public class UserController {
             UserBean user = new UserBean();
             user.setStunb(request.getInteger("stunb"));
             user.setPassword(request.getString("password"));
-            user.setName(request.getString("name"));
+            user.setNickname(request.getString("name"));
             user.setSex(request.getString("sex"));
             user.setAge(request.getInteger("age"));
             user.setLabel1(request.getString("label1"));
@@ -76,7 +76,7 @@ public class UserController {
         JSONObject userInfo = new JSONObject();
         userInfo.put("id", user.getId());
         userInfo.put("stunb", user.getStunb());
-        userInfo.put("name", user.getName());
+        userInfo.put("name", user.getNickname());
         userInfo.put("sex", user.getSex());
         userInfo.put("age", user.getAge());
         userInfo.put("label1", user.getLabel1());
@@ -99,7 +99,7 @@ public class UserController {
         JSONObject userInfo = new JSONObject();
         userInfo.put("id", user.getId());
         userInfo.put("stunb", user.getStunb());
-        userInfo.put("name", user.getName());
+        userInfo.put("name", user.getNickname());
         userInfo.put("sex", user.getSex());
         userInfo.put("age", user.getAge());
         userInfo.put("label1", user.getLabel1());
@@ -122,7 +122,7 @@ public class UserController {
         UserBean user = userService.getUserByID(id);
         user.setStunb(request.getInteger("stunb"));
         user.setPassword(request.getString("password"));
-        user.setName(request.getString("name"));
+        user.setNickname(request.getString("name"));
         user.setSex(request.getString("sex"));
         user.setAge(request.getInteger("age"));
         user.setLabel1(request.getString("label1"));

@@ -21,3 +21,5 @@ spring:
     generate-ddl: true # 自动生成
     show-sql: true # 现实sql到控制台
     database-platform: org.hibernate.dialect.MySQL8Dialect # 数据库方言 DataBbase枚举内获取
+
+

@@ -43,8 +43,8 @@ create table movies
 create table screenings
 (
     id        int auto_increment primary key,
-    cinema_id int not null,
-    movie_id  int not null,
+    cinemaid int not null,
+    movieid  int not null,
     time      varchar(255) null
 );
 
@@ -64,8 +64,8 @@ create table cinemas
 create table friends
 (
     id        int auto_increment primary key,
-    user_id   int not null,
-    friend_id int not null
+    userid   int not null,
+    friendid int not null
 );
 
 -- ----------------------

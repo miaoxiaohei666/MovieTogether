@@ -73,7 +73,7 @@ public class FriendService {
     }
 
     public List<UserBean> getFriendList(Integer user_id) {
-        List<FriendBean> friendBeanList = friendModel.findByUserid(user_id);
+        List<FriendBean> friendBeanList = friendModel.findAllByUserid(user_id);
         List<UserBean> userBeanList = new ArrayList<>();
         for (FriendBean friendBean : friendBeanList) {
             userBeanList.add(userModel.getUserBeanById(friendBean.getFriendid()));
@@ -82,7 +82,7 @@ public class FriendService {
     }
 
     public List<UserBean> getUserList(Integer friend_id) {
-        List<FriendBean> userBeanList = friendModel.findByFriendid(friend_id);
+        List<FriendBean> userBeanList = friendModel.findAllByFriendid(friend_id);
         List<UserBean> friendBeanList = new ArrayList<>();
         for (FriendBean friendBean : userBeanList) {
             friendBeanList.add(userModel.getUserBeanById(friendBean.getFriendid()));
@@ -95,11 +95,11 @@ public class FriendService {
     }
 
     public void delFriend(Integer user_id, Integer friend_id) {
-        friendModel.delete(friendModel.findByUseridAndFriendid(user_id,friend_id));
+        friendModel.delete(friendModel.getByUseridAndFriendid(user_id,friend_id));
     }
 
     public FriendBean findByUseridAndFriend(Integer user_id, Integer friend_id){
-       return friendModel.findByUseridAndFriendid(user_id,friend_id);
+       return friendModel.getByUseridAndFriendid(user_id,friend_id);
     }
 
 }

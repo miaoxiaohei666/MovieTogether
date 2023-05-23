@@ -10,7 +10,7 @@ public class UserBean {
     private Integer id;
     private Integer stunb;
     private String password;
-    private String name;
+    private String nickname;
     private String sex;
     private Integer age;
     private String label1;
@@ -33,8 +33,8 @@ public class UserBean {
         return password;
     }
 
-    public String getName() {
-        return name;
+    public String getNickname() {
+        return nickname;
     }
 
     public String getSex() {
@@ -65,8 +65,8 @@ public class UserBean {
         this.password = password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNickname(String name) {
+        this.nickname = name;
     }
 
     public void setSex(String sex) {
