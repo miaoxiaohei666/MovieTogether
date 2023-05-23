@@ -48,7 +48,9 @@ public class MovieController {
             return response.toString();
         }
         MovieBean movie = movieModel.findMovieById(id);
+        List<ScreeningBean> screening = movieService.getScreeningByMovieId(id);
         response.put("movie", movie);
+        response.put("session", screening);
         return response.toString();
     }
 
