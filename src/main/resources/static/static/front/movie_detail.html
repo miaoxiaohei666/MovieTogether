@@ -7,133 +7,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>电影详细信息</title>
     <style>
+        body {
+            margin: 0;
+        }
         * {
             margin: 0px;
             padding: 0px;
         }
-        
+
         .top {
-            width: 100%;
-            height: 50px;
-            background-color: rgb(56, 56, 56);
             position: fixed;
+            width: 100%;
+            height: 80px;
+            background-color: rgb(51, 51, 51, 86%);
         }
-        
+
         .icon {
-            width: 40px;
+            width: 50px;
             position: relative;
-            left: 20px;
-            top: 5px;
+            left: 30px;
+            top: 15px;
         }
-        
+
         .tit {
             letter-spacing: 5px;
             color: white;
             font-size: 30px;
             position: relative;
-            left: 20px;
-            top: -5px;
-            font-family: 华文行楷;
+            left: 40px;
+            font-family: 华文楷体;
         }
-        
+
         .image {
-            border: 1px solid;
-            border-color: white;
             position: relative;
-            top: 80px;
-            left: 50px;
+            width:200px;
+            top: 150px;
+            left: 160px;
         }
-        
+
         .post {
             width: 200px;
-            height: 270px;
+            height: 264px;
         }
-        
+
         .name {
             height: 50px;
             color: white;
-            font-size: 25px;
+            font-size: 30px;
             font-weight: 1000;
             letter-spacing: 5px;
             position: relative;
-            left: 80px;
-            top: 80px;
+            left: 220px;
+            top: 150px;
+            font-family: 'Courier New', Courier, monospace;
         }
-        
+
         .time {
             height: 50px;
             color: white;
-            font-size: 25px;
+            font-size: 30px;
             letter-spacing: 5px;
             position: relative;
-            left: 80px;
-            top: 40px;
+            left: 220px;
+            top: 130px;
+            font-family: 'Courier New', Courier, monospace;
         }
-        
+
         .type {
             height: 50px;
             color: white;
-            font-size: 25px;
+            font-size: 30px;
             letter-spacing: 5px;
             position: relative;
-            left: 80px;
+            left: 220px;
+            top:140px;
+            font-family: 'Courier New', Courier, monospace;
         }
-        
+
+        .session{
+            color:white;
+            height:50px;
+            font-size:30px;
+            letter-spacing:5px;
+            position:relative;
+            left:1000px;
+            top:-100px;
+            width:350px;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+        }
+
         .detail {
-            color: white;
-            width: 1000px;
-            font-size: 25px;
+            color: rgb(255, 255, 255);
+            width: 1300px;
+            font-size: 30px;
             position: relative;
-            top: 120px;
+            top: 10px;
             margin: 0 auto;
             text-indent: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            line-height:1.7;
         }
+
+        #but1
+        {
+            background:url('imags/return.jpg');
+            border:currentcolor;
+            position:fixed;
+            left:30px;
+            top:150px;
+            width:51px;
+            height:51px;
+        }
+
+
     </style>
 </head>
 
 <body>
-    <div>
-        <div style="z-index: 100;">
-            <div class="top">
-                <img class="icon" src="imags/电影(2).png">
-                <b class="tit">一起看电影吧</b>
-            </div>
-            <div>
-                <img src="imags/背景.jpg" class="back" height="100%" width="100%" style="z-index: -1; position: fixed; opacity: 0.9;" />
-            </div>
+<div>
+    <div style="z-index: 100;">
+        <!--    头-->
+        <div class="top">
+            <img class="icon" src="imags/riFill-movie-2-fill.svg">
+            <b class="tit">一起看电影吧</b>
         </div>
-        <table>
-            <tr>
-                <th class="image" rowspan="3">
-                    <img class="post" id="cover" src="imags/41C073F551F9924081ABE6DE87B596D5.jpg" />
-                </th>
-
-                <td class="name" id="name">
-                    暗恋·橘生
-                </td>
-            </tr>
-
-            <tr>
-                <td class="time" id="time">
-                    上映时间： 2022年7月2日</td>
-            </tr>
-            <tr>
-                <td class="type" id="type">
-                    类型： 爱情</td>
-            </tr>
-        </table>
-
-        <div class="detail" id="detail">
-            盛淮南，这个名字从儿时起便深深刻在洛枳心中。高中重逢，盛淮南像一道光，让洛枳忍不住仰望追随，也让洛枳的少女心事无处可藏。 天台上刻着的“洛枳爱盛淮南，谁也不知道”是洛枳说不出口的暗恋宣言。考进大学后，洛枳满心期待展开新的生活， 竟发现盛淮南在同一所大学。两人逐渐认识，越走越近，却都不敢表白心迹。 当成长和现实的压力接踵而来，这场漫长的暗恋，究竟该如何安放。
+        <div>
+            <img src="imags/back2.jpg" class="back" height="100%" width="100%" style="z-index: -1; position: fixed; opacity: 1.0;" />
         </div>
     </div>
+    <table>
+        <tr>
+            <th class="image" rowspan="3">
+                <img class="post" id="cover" src="imags/41C073F551F9924081ABE6DE87B596D5.jpg" />
+            </th>
+
+            <td class="name" id="name">
+                暗恋·橘生
+            </td>
+        </tr>
+
+        <tr>
+            <td class="type" id="type">
+                类型:爱情</td>
+        </tr>
+
+        <tr>
+            <td class="time" id="time">
+                上映时间:2022年7月2日</td>
+        </tr>
+
+
+        <tr>
+            <td class="session" id="session">
+                场次：时间时间时间
+                场次：时间时间时间
+                场次：时间时间时间
+                场次：时间时间时间
+                场次：时间时间时间
+        </tr>
+    </table>
+
+    <div class="detail" id="detail">
+        盛淮南，这个名字从儿时起便深深刻在洛枳心中。高中重逢，盛淮南像一道光，让洛枳忍不住仰望追随，也让洛枳的少女心事无处可藏。 天台上刻着的“洛枳爱盛淮南，谁也不知道”是洛枳说不出口的暗恋宣言。考进大学后，洛枳满心期待展开新的生活， 竟发现盛淮南在同一所大学。两人逐渐认识，越走越近，却都不敢表白心迹。 当成长和现实的压力接踵而来，这场漫长的暗恋，究竟该如何安放。
+    </div>
+
+    <button type="button" id="but1" onclick="javascript:window.history.go(-1)"></button>
+</div>
 </body>
 
 <script>
     id = localStorage.getItem("movie_id")
     Fetch('/movie/detail', JSON.stringify({
-            id: id
-        }))
+        id: id
+    }))
         .then(res => {
             msg = res.msg
             if (!res.movie || msg == "电影信息不存在！") {
@@ -146,9 +193,10 @@
 
                 document.getElementById('name').innerText = res.movie.name
                 document.getElementById('time').innerText = '上映时间' + ' ' + res.movie.time
-                document.getElementById('type').innerText = '类型：' + res.movie.label
+                document.getElementById('type').innerText = '类型：' + res.movie.sort
                 document.getElementById('detail').innerText = res.movie.introduction
                 document.getElementById('cover').src = res.movie.cover
+                document.getElementById('session').innerText=res.movie.session
             }
 
 
@@ -170,3 +218,40 @@
 </script>
 
 </html>
+<script>
+    (function() {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    }
+                    else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        }
+                        else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>

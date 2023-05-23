@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/base.css">
     <title>好友列表</title>
+    <script src="jquery.min.js"></script>
+
+<!--    <link rel="stylesheet" href="css/base.css">-->
+
 
     <style>
         body {
@@ -97,91 +100,91 @@
             bottom: 0;
             left: 251px;
             overflow-y: auto;
-            /*background-color: #fff;*/
+
         }
 
-        .center {
-            background-color: white;
-            width: 700px;
-            height: 100vh;
-            position: relative;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
+        /*.center {*/
+        /*    background-color: white;*/
+        /*    width: 700px;*/
+        /*    height: 100vh;*/
+        /*    position: relative;*/
+        /*    margin: 0 auto;*/
+        /*    opacity: 0.8;*/
+        /*}*/
 
-        .id {
-            font-weight: 400;
-            letter-spacing: 5px;
-            font-size: 40px;
-            position: relative;
-            left: 30px;
-            top: 10px;
-        }
+        /*.id {*/
+        /*    font-weight: 400;*/
+        /*    letter-spacing: 5px;*/
+        /*    font-size: 40px;*/
+        /*    position: relative;*/
+        /*    left: 30px;*/
+        /*    top: 10px;*/
+        /*}*/
 
-        .re {
-            height: 50px;
-            margin-left: 30px;
-            margin-right: 30px;
-            position: relative;
-            top: 30px;
-            background-color: lightgray;
-            font-size: 20px;
-            border-radius: 10px;
-            line-height: 50px;
-        }
+        /*.re {*/
+        /*    height: 50px;*/
+        /*    margin-left: 30px;*/
+        /*    margin-right: 30px;*/
+        /*    position: relative;*/
+        /*    top: 30px;*/
+        /*    background-color: lightgray;*/
+        /*    font-size: 20px;*/
+        /*    border-radius: 10px;*/
+        /*    line-height: 50px;*/
+        /*}*/
 
-        .receive {
-            float: right;
-            margin-right: 20px;
-        }
+        /*.receive {*/
+        /*    float: right;*/
+        /*    margin-right: 20px;*/
+        /*}*/
 
-        .new {
-            position: relative;
-            left: 20px;
-        }
+        /*.new {*/
+        /*    position: relative;*/
+        /*    left: 20px;*/
+        /*}*/
 
         /*.box{*/
         /*    position: relative;*/
         /*    top: 50px;*/
         /*    */
         /*}*/
-        td {
-            background-color: lightgray;
-            position: relative;
-            left: 50px;
-            top: 50px;
-            border: 2px solid white;
-            width: 600px;
-            padding-left: 10px;
-        }
+        /*td {*/
+        /*    background-color: lightgray;*/
+        /*    position: relative;*/
+        /*    left: 50px;*/
+        /*    top: 50px;*/
+        /*    border: 2px solid white;*/
+        /*    width: 600px;*/
+        /*    padding-left: 10px;*/
+        /*}*/
 
-        .button1 {
-            background-color: rgb(102, 179, 247);
-            width: 50px;
-            height: 30px;
-            position: relative;
-            top: 50px;
-            border: 0;
-            color: white;
-            border-radius: 15px;
-            line-height: 30px;
-            margin-top: 10px;
-            left: -80px;
-        }
+        /*.button1 {*/
+        /*    background-color: rgb(102, 179, 247);*/
+        /*    width: 50px;*/
+        /*    height: 30px;*/
+        /*    position: relative;*/
+        /*    top: 50px;*/
+        /*    border: 0;*/
+        /*    color: white;*/
+        /*    border-radius: 15px;*/
+        /*    line-height: 30px;*/
+        /*    margin-top: 10px;*/
+        /*    left: -80px;*/
+        /*}*/
 
-        .button2{
-            background-color: rgb(226, 107, 107);
-            width: 50px;
-            height: 30px;
-            position: relative;
-            top: 10px;
-            border: 0;
-            color: white;
-            border-radius: 15px;
-            line-height: 30px;
-            margin-top: 10px;
-            left: -10px;
-        }
+        /*.button2{*/
+        /*    background-color: rgb(226, 107, 107);*/
+        /*    width: 50px;*/
+        /*    height: 30px;*/
+        /*    position: relative;*/
+        /*    top: 10px;*/
+        /*    border: 0;*/
+        /*    color: white;*/
+        /*    border-radius: 15px;*/
+        /*    line-height: 30px;*/
+        /*    margin-top: 10px;*/
+        /*    left: -10px;*/
+        /*}*/
     </style>
 </head>
 
@@ -214,7 +217,7 @@
                 <li class="li2" id="6">恐怖片</li>
                 <li class="li">
                     <img src="imags/ze-friends-o@1x.png" class="be">
-                    <a href="">用户列表</a>
+                    <a href="user_list.html">用户列表</a>
                 </li>
                 <li class="li" onclick="window.location.reload()">
                     <img src="imags/arcoDesign-user-add@1x (1).png" class="be">
@@ -222,18 +225,16 @@
                 </li>
                 <li class="li">
                     <img src="imags/ze-envelop-o@1x.png" class="be">
-                    <a href="">我的邀约</a>
+                    <a href="invite_list.html">我的邀约</a>
                 </li>
                 <li class="li">
                     <img src="imags/iconPark-user@1x.png" class="be">
-                    <a href="">个人主页</a>
+                    <a href="person_mes.html">个人主页</a>
                 </li>
             </ul>
         </div>
 
         <div class="list" id="list">
-
-
         </div>
     </div>
 
@@ -260,102 +261,6 @@
 
 <script>
 
-
-    token = localStorage.getItem("token")
-    Fetch('/friend/list', JSON.stringify({
-        token: token
-    }))
-        .then(res => {
-
-            if (res.list) {
-                // 整体框架
-                var tbody = document.getElementById('list')
-                // "我的好友"
-                var head1 = document.createElement("div")
-                head1.className = "head1"
-                head1.innerText = "我的好友"
-                tbody.appendChild(head1)
-                // 好友列表
-                res.list.forEach(function (i) {
-
-                    //查询个人信息
-                    Fetch('/user/getbystunb', JSON.stringify({
-                        token: localStorage.getItem("token")
-                    }))
-                        .then(res => {
-                            msg = res.msg
-                            if (!msg || msg == "wrong token!") {
-                                alert('该用户不存在')
-                            } else {
-                                // document.getElementById("name").value = res.name
-                                // document.getElementById("sex").value = res.sex
-                                // document.getElementById("age").value = res.age
-                                // document.getElementById("addr").value = res.addr
-                                // document.getElementById("love").value = res.label1 + ' ' + res.label2 + ' ' + res.label3
-
-                                //创建一个大条形
-                                var div = document.createElement("div")
-                                //名字框和信息框
-                                var p1 = document.createElement("p")
-                                var p2 = document.createElement("p")
-                                var p3 = document.createElement("p")
-                                // 创建空格
-                                // var br = document.createElement('br')
-                                //邀约和删除按钮
-                                var button1 = document.createElement("button")
-                                var button2 = document.createElement("button")
-                                //名字
-                                p1.innerText = list[i].nickname
-                                //信息
-                                p2.innerText = list[i].sex + ' ' +list[i].age + ' ' + list[i].label1 + ' ' + list[i].label2 + ' ' +list[i].label3
-
-                                button1.className = "button1"
-                                button2.className = "button2"
-                                button1.innerText = "发起邀约"
-                                button2.innerText = "删除"
-
-                                p3.appendChild(button1)
-                                p3.appendChild(button2)
-                                div.appendChild(p1)
-                                div.appendChild(p2)
-                                div.appendChild(p3)
-                                tbody.appendChild(div)
-
-                                button1.onclick = function() {
-
-                                    Fetch('/invite/create', JSON.stringify({
-                                        token: token,
-                                        receiver: i.id
-                                    }))
-                                        .then(res => {
-                                            msg = res.msg
-                                            alert(msg)
-                                        })
-                                }
-                                console.log(i)
-                                button2.onclick = function (){
-                                    Fetch('/friend/delete', JSON.stringify({
-                                        token: token,
-                                        friendid: i.id,
-
-                                    }))
-                                        .then(res => {
-                                            msg = res.msg
-                                            alert('删除成功，请刷新查看')
-
-                                        })
-                                }
-                            }
-
-
-
-                        })
-
-                })
-            }
-            msg = res.msg
-        })
-
     async function Fetch(path, body) {
         return await fetch("http://localhost:8080" + path, {
             method: 'POST',
@@ -367,6 +272,122 @@
             return res.json()
         })
     }
+
+    token = localStorage.getItem("token")
+    console.log(token)
+
+    function fd(){
+        Fetch('/friend/list', JSON.stringify({
+            token: token
+        }))
+            .then(res => {
+                console.log(res)
+
+                if (res.list) {
+                    var list = res.list
+                    console.log("rtyhujk")
+                    console.log(res)
+                    // 整体框架
+                    var tbody = document.getElementById('list')
+                    tbody.style.position = "fixed"
+                    tbody.style.top = "81px"
+                    tbody.style.left = "251px"
+                    tbody.style.right = "0"
+                    tbody.style.bottom = "0"
+                    tbody.style.overflowY = "auto"
+                    tbody.style.display = "flex"
+
+                    var head1 = document.createElement("div")
+                    head1.className = "head1"
+                    head1.innerText = "我的好友"
+
+                    var divz = document.createElement('div');
+                    divz.style.display = "flex"
+                    // divz.style.flexDirection = "row"
+                    divz.style.flexWrap = "wrap"
+                    divz.style.justifyContent = "center"
+
+                    // 好友列表
+                    for (let i = 0; i < list.length; i++){
+                        //创建一个大条形
+                        var div = document.createElement("div")
+                        div.style.display = "flex"
+                        div.style.flexDirection = "column"
+                        // div.style.alignItems = "center"
+                        // div.style.marginRight = "25px"
+                        div.style.marginTop = "40px"
+                        div.style.width = "600px"
+                        //名字框和信息框
+                        var p1 = document.createElement("p")
+                        var p2 = document.createElement("p")
+                        var div1 = document.createElement("div")
+                        var div2 = document.createElement("div")
+                        //名字
+                        p1.innerText = list[i].nickname
+                        //信息
+                        p2.innerText = list[i].sex + ' ' +list[i].age + ' ' + list[i].label1 + ' ' + list[i].label2 + ' ' +list[i].label3
+                        // 创建换行
+                        var br = document.createElement('br')
+                        //邀约和删除按钮
+                        var button1 = document.createElement("button")
+                        var button2 = document.createElement("button")
+                        button1.className = "button1"
+                        button2.className = "button2"
+                        button1.innerText = "发起邀约"
+                        button2.innerText = "删除"
+                        div1.appendChild(p1)
+                        div1.appendChild(br)
+                        div1.appendChild(p2)
+                        div2.appendChild(button1)
+                        div2.appendChild(button2)
+
+                        div.appendChild(div1)
+                        div.appendChild(div2)
+
+                        divz.appendChild(div)
+
+                        button1.onclick = function() {
+
+                            Fetch('/invite/create', JSON.stringify({
+                                token: token,
+                                receiver: i.id
+                            }))
+                                .then(res => {
+                                    msg = res.msg
+                                    alert(msg)
+                                })
+                        }
+
+                        console.log(i)
+                        button2.onclick = function (){
+                            Fetch('/friend/delete', JSON.stringify({
+                                token: token,
+                                friendid: i.id,
+
+                            }))
+                                .then(res => {
+                                    msg = res.msg
+                                    alert('删除成功，请刷新查看')
+
+                                })
+                        }
+                    }
+
+                    tbody.appendChild(head1)
+                    tbody.appendChild(divz)
+
+                    // res.list.forEach(function (i) {
+                    //
+                    // }
+                    //)
+                }
+                msg = res.msg
+            })
+    }
+
+    fd();
+
+
 </script>
 
 

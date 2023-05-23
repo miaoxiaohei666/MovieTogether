@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .top {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            background-color: rgb(51, 51, 51, 86%);
+        }
+
+        .icon {
+            width: 50px;
+            position: relative;
+            left: 30px;
+            top: 15px;
+        }
+
+        .tit {
+            letter-spacing: 5px;
+            color: white;
+            font-size: 30px;
+            position: relative;
+            left: 40px;
+            font-family: 华文楷体;
+        }
+
+        .nav{
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            background-color: rgb(255, 255, 255, 70%);
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width:250px;
+        }
+
+        .li {
+            position: relative;
+            height: 60px;
+            line-height: 60px;
+            padding-left: 25px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .li2{
+            height: 50px;
+            line-height: 50px;
+            padding-left: 55px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .be{
+            width: 20px;
+            top: 20px;
+            margin-right: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <!--    头-->
+    <div class="top">
+        <img class="icon" src="imags/riFill-movie-2-fill.svg">
+        <b class="tit">一起看电影吧</b>
+    </div>
+    <!--    背景-->
+    <div>
+        <img src="imags/back.jpg" class="back" height="100%" width="100%"
+             style="z-index: -1; position: fixed; opacity: 1.0;"/>
+    </div>
+
+    <div class="main">
+
+        <div class="nav">
+            <ul>
+                <li class="li" onclick="window.location.reload()">
+                    <img src="imags/riLine-film-line@1x.png" class="be">
+                    <a href="movie_index.html">热映电影</a>
+                </li>
+                <li class="li2" id="0">全部</li>
+                <li class="li2" id="1">喜剧片</li>
+                <li class="li2" id="2">情感片</li>
+                <li class="li2" id="3">动作片</li>
+                <li class="li2" id="4">悬疑片</li>
+                <li class="li2" id="5">科幻片</li>
+                <li class="li2" id="6">恐怖片</li>
+                <li class="li">
+                    <img src="imags/ze-friends-o@1x(1).png" class="be">
+                    <a href="user_list.html"  style="color: #4095E5"  onclick="window.location.reload()">用户列表</a>
+                </li>
+                <li class="li">
+                    <img src="imags/arcoDesign-user-add@1x.png" class="be">
+                    <a href="friend_list.html">好友列表</a>
+                </li>
+                <li class="li">
+                    <img src="imags/ze-envelop-o@1x.png" class="be">
+                    <a href="invite_list.html">我的邀约</a>
+                </li>
+                <li class="li">
+                    <img src="imags/iconPark-user@1x.png" class="be">
+                    <a href="person_mes.html">个人主页</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="list">
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    async function Fetch(path, body) {
+        return await fetch("http://127.0.0.1:8080" + path, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: body,
+        }).then(res => {
+            return res.json()
+        })
+    }
+
+    // 用户列表
+    var map1 = new Map();
+
+    function search3() {
+        Fetch('/user/label', JSON.stringify({
+            label: label,
+            address: localStorage.getItem("address")
+        }))
+            .then(res => {
+
+                console.log(localStorage.getItem("address"))
+                list = res.list
+                console.log(res);
+
+                var tbody = document.querySelector(".list");
+                tbody.style.position = "fixed"
+                tbody.style.top = "81px"
+                tbody.style.left = "251px"
+                tbody.style.right = "0"
+                tbody.style.bottom = "0"
+                tbody.style.overflowY = "auto"
+                tbody.style.display = "flex"
+
+                var divz = document.createElement('div');
+                divz.style.display = "flex"
+                // divz.style.flexDirection = "row"
+                // divz.style.flexWrap = "wrap"
+                divz.style.justifyContent = "center"
+
+                for (let i = 0; i < list.length; i++) {
+
+                    if (map1.has(list[i].nickname) || list[i].address != localStorage.getItem("address"))
+                        continue;
+                    else
+                        map1.set(list[i].nickname, "1");
+
+                    //创建一个大条形
+                    var div = document.createElement("div")
+                    div.style.display = "flex"
+                    // div.style.flexDirection = "column"
+                    // div.style.alignItems = "center"
+                    // div.style.marginRight = "25px"
+                    div.style.marginTop = "40px"
+                    div.style.width = "600px"
+                    //名字框和信息框
+                    var p1 = document.createElement("p")
+                    var p2 = document.createElement("p")
+                    var div1 = document.createElement("div")
+                    var div2 = document.createElement("div")
+                    //名字
+                    p1.innerText = list[i].nickname
+                    //信息
+                    p2.innerText = list[i].sex + ' ' +list[i].age + '岁 ' + list[i].label1 + ' ' + list[i].label2 + ' ' +list[i].label3
+                    // 创建换行
+                    var br = document.createElement('br')
+                    //邀约和删除按钮
+                    var button1 = document.createElement("button")
+                    button1.className = "button1"
+                    button1.innerText = "添加好友"
+
+                    div1.appendChild(p1)
+                    div1.appendChild(br)
+                    div1.appendChild(p2)
+                    div2.appendChild(button1)
+
+                    div.appendChild(div1)
+                    div.appendChild(div2)
+
+                    divz.appendChild(div)
+
+                    // div.className = "b4"
+                    // div.innerHTML = list[i].nickname + " " + list[i].age + "岁    " + list[i].sex + " "
+                    //     + "武汉市 " + list[i].address;
+
+                    b.onclick=function () {
+                        //添加好友
+                        token=localStorage.getItem("token")
+
+                        Fetch('/friend/add', JSON.stringify({
+                            token: token,
+                            phone: list[i].phone
+                        }))
+                            .then(res => {
+                                msg = res.msg
+                                if(msg == "already add!"){
+                                    alert('请勿重复加好友！')
+                                }
+                                if(msg == "ok"){
+                                    alert('您已成功加他为好友')
+                                }
+                            })
+                    }
+                }
+
+                tbody.appendChild(div);
+
+            })
+    }
+
+    search3();
+
+
+</script>
+</body>
+</html>

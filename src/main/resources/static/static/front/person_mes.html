@@ -2,54 +2,299 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>电影首页</title>
-    <script src="jquery.min.js"></script>
+    <title>个人主页</title>
     <style>
         body {
             margin: 0;
         }
-        .header {
-            width: 100%;
-            height: 54px;
-            position: fixed;
-            border-bottom: 1px solid #e4e6e9;
-            background: #ccc;
+        .body {
+            position: relative;
+            left: 80px;
+            top: 50px;
+            width: 350px;
+            height: 30px;
+            border: 5px solid;
+            border-color: rgba(211, 211, 211, 0.733);
+            border-radius: 10px;
+            color: black;
+            padding-left: 10px;
         }
-        .sidebar {
-            position: fixed;
-            top: 54px;
-            bottom: 0;
-            left: 0;
-            width: 300px;
-            border-right: 1px solid #e4e6e9;
-            background-color: #fff;
-        }
-        .content {
-            position: fixed;
-            top: 54px;
-            right: 0;
-            bottom: 0;
-            left: 301px;
-            overflow-y: auto;
-            background-color: #fff;
+        * {
+            margin: 0px;
+            padding: 0px;
         }
 
+        .top {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            background-color: rgb(51, 51, 51, 86%);
+        }
+
+        .icon {
+            width: 50px;
+            position: relative;
+            left: 30px;
+            top: 15px;
+        }
+
+        .tit {
+            letter-spacing: 5px;
+            color: white;
+            font-size: 30px;
+            position: relative;
+            left: 40px;
+            font-family: 华文楷体;
+        }
+
+        .nav{
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            background-color: rgb(255, 255, 255, 70%);
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width:250px;
+        }
+
+        .li {
+            position: relative;
+            height: 60px;
+            line-height: 60px;
+            padding-left: 25px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .li2{
+            height: 50px;
+            line-height: 50px;
+            padding-left: 55px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .be{
+            width: 20px;
+            top: 20px;
+            margin-right: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .list {
+            position: fixed;
+            top: 81px;
+            right: 0;
+            bottom: 0;
+            left: 251px;
+            overflow-y: auto;
+            /*background-color: #fff;*/
+        }
+        .center {
+            background-color: white;
+            width: 600px;
+            top:100px;
+            left:100px;
+            height:630px;
+            position: relative;
+            margin: 0 auto;
+            opacity: 0.8;
+            border-radius: 20px;
+        }
+
+        .id {
+            font-weight: 350;
+            letter-spacing: 5px;
+            font-size: 25px;
+            position: relative;
+            left: 250px;
+            top: 30px;
+        }
+
+        .update {
+            width: 200px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: rgb(102, 179, 247);
+            color: white;
+            border: 0px;
+            position: relative;
+            font-size: 20px;
+            left: -40px;
+            top: 540px;
+        }
+
+        .exit {
+            width: 200px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: rgb(248, 139, 139);
+            color: white;
+            border: 0px;
+            position: relative;
+            font-size: 20px;
+            left: 40px;
+            top: 540px;
+        }
+
+        .head {
+            position: relative;
+            border: 15px solid white;
+            font-size: 25px;
+            left: 60px;
+            top: 50px;
+        }
 
 
     </style>
 </head>
 
+
 <body>
-    <div class="header">
-    </div>
+<!--    头-->
+<div class="top">
+    <img class="icon" src="imags/riFill-movie-2-fill.svg">
+    <b class="tit">一起看电影吧</b>
+</div>
+<!--    背景-->
+<div>
+    <img src="imags/back.jpg" class="back" height="100%" width="100%"
+         style="z-index: -1; position: fixed; opacity: 1.0;"/>
+</div>
 
-    <div class="main">
-        <div class="sidebar">sidebar</div>
-        <div class="content">
-            世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。 世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。 世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。 世间有一种相互的情愿、一种情感的眷恋、一种情怀的着落，一种甜情密意的爱。 爱情在彼此之间、难得珍贵。需要包容和蔼，需要俩情相续。人生没有任何情感能抵得上爱情来的强烈。真爱从心底滋生，滋润着的爱；能让岁月变得丰满幸福。 爱情经历过静默欢喜的心跳，心潮澎湃的悸动，小心翼翼的呵护。挚爱灵魂的降临，柔情蜜意的体会，爱情的情愫引诱着彼此之间的情怀。爱情就像一团火焰，热情奔放在彼此之间燃烧；爱就像颜丽的山花，烂漫开放在彼此之间芬芳的岁月里。 爱情在彼此之间是愉悦、是幸福的向往，有一种渴念，一种欲望。一个人如果没有了爱情的支撑，剩下的只有精神空虚，孤独寂寞。无论多么痛苦，爱情只是人生的一个部分。在现实面前，只有理顺思路，忘掉不愉，打点精神生活，才能继续愉悦自己的人生。 当然爱情很美好，但有时也会不如意。人生本来就在旅途中，有阳光与暗淡的一面，难免会经历过低谷，不必过于焦虑不安。如果一方有离去的企图，千万不得挽留，留下的人也留不住心。人走了茶也就凉了，再温了也没了芳香。在拥有时好好地珍惜，爱情本来就需要真情来相待。 做人要懂得思考，一个愚痴的人，一旦跳进了失恋的漩涡、难以挣脱。忧忧寂寞、郁郁寡欢、心劳意攘不可自拔。一个明智的人，通情达理，一切顺其自然，不会执着于曾经的美好。既然她执意要走，爱情就已经失去了光泽。那么，何必再度留念她的光彩。 情感确实曼妙。有时机遇恰巧会眷顾了爱情。在擦肩而过的人群中谁能与你并肩同行；谁能理会同你一道上船、驶往爱的彼岸。在滚滚红尘中，只有俩厢情愿，情投意合，才能算是一见钟情，顺理成章。 在这世界上有一种爱情叫着缘分。在谈笑中相遇、在不经意中发生。爱情在几度转角处相识，最终还是选择初恋的那个好。这不要说偶尔、也不能说凑巧，他们在冥冥之间自然的形成。那是一种力量的无形缠绕，在偶遇中滋生存在着相遇的机会与可能。 树靠营养吸收生长，开花结果。人也需要吸收养分，也需要茁壮成长。特别在爱恋之间那微妙的时刻，得像春花一样灿烂，滋润着培育成绚丽多姿让人羡慕，让人欣赏。人靠衣装马靠鞍，一个人的内涵显示在品位上，整洁大方是对对方的尊重。 情窦初开的年华，一朵鲜花，谁采不是采，谁献不是献。也可以说、谁先采来谁先戴。但是、爱情还存有它诸多的要素与情感的诠释。 人到成熟自然而然就会寻求恋爱。恋爱会造就情侣的幸福与美满。爱情与年龄无关；有共同语言，相似情怀，类似的经历坦诚自然的交流，毫不做作的表现。只有深入了解，才有爱情的起因。爱情用真情来实现相互交流的过程。爱情是向往，是打造婚姻的基础。 爱情自由，婚姻自主。从古至今，在世俗面前往往是种摆设。门当户对，门第观念。才会有爱情悲剧故事的上演：《牛郎织女》《梁山伯与祝英台》《罗密欧与朱丽叶》等等。全面再现了封建世俗末世人性世态，揭示了弱势与强势的种种悲剧与无法调和的社会矛盾。 爱情的行为是柔，慢条斯理，不是急于求成。爱情是双方感情的因果，一个人的行为不叫爱情。爱情是有针对性的，千万别搞错，有的只是友情层面上对你好，那不是爱情。一个人来维持痴情那是很痛苦的一件事。没有物质的爱情是可悲的，他保证不了爱情的延续性。 真正的爱情，不论贫富，不论远近。千般情怀，万般眷恋。红尘陌上，心系悠长。约言迢迢千里，只因情怀而来；邈路遥遥朝暮，只因眷恋而去。
-        </div>
+<div class="main">
+
+    <div class="nav">
+        <ul>
+            <li class="li">
+                <img src="imags/riLine-film-line@1x.png" class="be">
+                <a href="movie_index.html">热映电影</a>
+            <li class="li2" id="0">全部
+            <li class="li2" id="1">喜剧片
+            <li class="li2" id="2">情感片
+            <li class="li2" id="3">动作片
+            <li class="li2" id="4">悬疑片
+            <li class="li2" id="5">科幻片
+            <li class="li2" id="6">恐怖片
+            <li class="li">
+                <img src="imags/ze-friends-o@1x.png" class="be">
+                <a href="">用户列表</a>
+            <li class="li" >
+                <img src="imags/arcoDesign-user-add@1x.png" class="be">
+                <a href="">好友列表</a>
+            <li class="li">
+                <img src="imags/ze-envelop-o@1x.png" class="be">
+                <a href="">我的邀约</a>
+            <li class="li" onclick="window.location.reload()">
+                <img src="imags/iconPark-user@1x (1).png" class="be">
+                <a href=""  style="color: #4095E5">个人主页</a>
+        </ul>
     </div>
+    <div class="center">
+
+        <b class="id">个人信息</b>
+        <!-- <img src="imags/个人主页.png" style="width: 50px; position: relative; top: 20px; left: 20px;"> -->
+        <span>
+                <button onclick="location.href='personal.html'" class="update" type="button">
+                    修改个人信息
+                </button>
+
+                <button onclick="location.href = 'login.html'" class="exit" type="button">
+                退出
+                </button>
+
+        </span>
+        <form style=" top: 15px; position: relative;">
+            <table>
+                <tr>
+                    <td class="head">id</td>
+                    <td><input disabled ="true" type="text" class="body" id="id" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">用户名</td>
+                    <td><input disabled ="true" type="text" class="body" id="name" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">性别</td>
+                    <td><input disabled ="true" type="text" class="body" id="sex" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">年龄</td>
+                    <td><input disabled ="true" type="text" class="body" id="age" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">学校</td>
+                    <td><input disabled ="true" type="text" class="body" id="addr" value="无"></td>
+                </tr>
+                <tr>
+                    <td class="head">喜好</td>
+                    <td><input disabled ="true" type="text" class="body" id="love" value="无"></td>
+                </tr>
+            </table>
+        </form>
+        <!-- <span>
+            <input type="button" value="修改个人信息" class="zhu" onclick="location.href='personal.html'">
+        </span> -->
+    </div>
+</div>
+
+<script>
+    // var searchStr = location.search;
+    // searchStr = searchStr.substr(1);
+    // var searchs = searchStr.split("&");
+    // var address = searchs[0].split("=");
+    // document.getElementsById("name").value = address[1];
+
+    //查询个人信息
+    Fetch('/user/info', JSON.stringify({
+        token: localStorage.getItem("token")
+    }))
+        .then(res => {
+            msg = res.msg
+            if (!msg || msg == "wrong token!") {
+                alert('请先登录!')
+            } else {
+                console.log(res)
+                console.log(res.data.sex)
+                document.getElementById("id").value = res.data.id
+                document.getElementById("name").value = res.data.nickname
+                document.getElementById("sex").value = res.data.sex
+                document.getElementById("age").value = res.data.age
+                // document.getElementById("school").value = res.school
+                document.getElementById("love").value = res.data.label1 + ' ' + res.data.label2 + ' ' + res.data.label3
+            }
+
+        })
+
+
+    async function Fetch(path, body) {
+        return await fetch("http://127.0.0.1:8080" + path, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                // 'Origin': '*'
+            },
+            body: body,
+        }).then(res => {
+            return res.json()
+        })
+    }
+</script>
 </body>
-
+</html>
