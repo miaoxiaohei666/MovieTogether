@@ -52,7 +52,7 @@ public class MovieController {
         List<ScreeningBean> screening = movieService.getScreeningByMovieId(id);
         List<CinemaBean> cinemaBeanList = new ArrayList<>();
         for (ScreeningBean s:screening){
-            cinemaBeanList.add(movieService.getCinemaInfo(s.getId()));
+            cinemaBeanList.add(movieService.getCinemaInfo(s.getCinemaid()));
         }
         response.put("movie", movie);
         response.put("session", screening);

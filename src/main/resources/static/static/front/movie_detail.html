@@ -184,7 +184,7 @@
         .then(res => {
             console.log(res)
             msg = res.msg
-            if (!res.movie || msg == "电影信息不存在！") {
+            if (msg == "电影信息不存在！") {
                 alert("加载失败")
 
             } else {
@@ -197,7 +197,7 @@
                 document.getElementById('type').innerText = '类型：' + res.movie.sort
                 document.getElementById('detail').innerText = res.movie.description
                 document.getElementById('cover').src = res.movie.cover
-                document.getElementById('session').innerText=res.movie.session
+                document.getElementById('session').innerText=res.session
             }
 
 
