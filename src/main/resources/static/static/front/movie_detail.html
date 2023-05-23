@@ -87,7 +87,7 @@
         .session{
             color:white;
             height:50px;
-            font-size:30px;
+            font-size:22px;
             letter-spacing:5px;
             position:relative;
             left:1000px;
@@ -100,9 +100,9 @@
         .detail {
             color: rgb(255, 255, 255);
             width: 1300px;
-            font-size: 30px;
+            font-size: 23px;
             position: relative;
-            top: 10px;
+            top: 0px;
             margin: 0 auto;
             text-indent: 50px;
             font-family: 'Courier New', Courier, monospace;
@@ -192,6 +192,8 @@
             } else {
                 // console.log(res.movie.name)
                 console.log(res.movie)
+                console.log(res.movie)
+                var br = document.createElement('br')
                 console.log(res.session)
 
                 document.getElementById('name').innerText = res.movie.name
@@ -199,8 +201,13 @@
                 document.getElementById('type').innerText = '类型：' + res.movie.sort
                 document.getElementById('detail').innerText = res.movie.description
                 document.getElementById('cover').src = res.movie.cover
-                document.getElementById('session').innerText=res.session.time
 
+
+                let s = ''
+                for (let i = 0; i < list1.length; i++){
+                    s += list1[i].time + ' ' + list2[i].name + '\n'
+                }
+                document.getElementById('session').innerText=s
 
             }
 
