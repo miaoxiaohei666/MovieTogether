@@ -31,11 +31,12 @@ create table users
 -- ----------------------
 create table movies
 (
-    id    int auto_increment primary key,
-    name  varchar(255) not null,
-    time  varchar(255) null,
-    sort  varchar(255) null,
-    cover varchar(255) null
+    id          int auto_increment primary key,
+    name        varchar(255) not null,
+    time        varchar(255) null,
+    sort        varchar(255) null,
+    cover       varchar(255) null,
+    description text null
 );
 
 -- ----------------------
