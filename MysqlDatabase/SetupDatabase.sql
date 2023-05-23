@@ -20,6 +20,7 @@ create table users
     nickname varchar(255) not null,
     sex      varchar(255) not null,
     age      int          not null,
+    school   varchar(255) not null,
     label1   varchar(255) null,
     label2   varchar(255) null,
     label3   varchar(255) null
@@ -42,10 +43,10 @@ create table movies
 -- ----------------------
 create table screenings
 (
-    id        int auto_increment primary key,
+    id       int auto_increment primary key,
     cinemaid int not null,
     movieid  int not null,
-    time      varchar(255) null
+    time     varchar(255) null
 );
 
 -- ----------------------
@@ -63,7 +64,7 @@ create table cinemas
 -- ----------------------
 create table friends
 (
-    id        int auto_increment primary key,
+    id       int auto_increment primary key,
     userid   int not null,
     friendid int not null
 );

@@ -13,6 +13,7 @@ public class UserBean {
     private String nickname;
     private String sex;
     private Integer age;
+    private String school;
     private String label1;
     private String label2;
     private String label3;
@@ -87,5 +88,13 @@ public class UserBean {
 
     public void setLabel3(String label3) {
         this.label3 = label3;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
     }
 }
