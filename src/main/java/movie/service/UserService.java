@@ -28,4 +28,7 @@ public class UserService{
     public void addUser(UserBean user){
         userModel.save(user);
     }
+    public List<UserBean> findAllUser(){
+        return userModel.findAll();
+    }
 }

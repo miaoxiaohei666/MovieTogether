@@ -142,4 +142,13 @@ public class UserController {
         response.put("list", list);
         return response.toString();
     }
+
+    //获取用户群
+    @PostMapping(value = "/user/list")
+    public String getAllUser() {
+        JSONObject response = new JSONObject();
+        List<UserBean> list = userService.findAllUser();
+        response.put("list", list);
+        return response.toString();
+    }
 }
