@@ -1,6 +1,7 @@
 package movie.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import movie.dao.bean.CinemaBean;
 import movie.dao.bean.MovieBean;
 import movie.dao.bean.ScreeningBean;
 import movie.dao.model.CinemaModel;
@@ -49,8 +50,13 @@ public class MovieController {
         }
         MovieBean movie = movieModel.findMovieById(id);
         List<ScreeningBean> screening = movieService.getScreeningByMovieId(id);
+        List<CinemaBean> cinemaBeanList = new ArrayList<>();
+        for (ScreeningBean s:screening){
+            cinemaBeanList.add(movieService.getCinemaInfo(s.getId()));
+        }
         response.put("movie", movie);
         response.put("session", screening);
+        response.put("cinema", cinemaBeanList);
         return response.toString();
     }
 
