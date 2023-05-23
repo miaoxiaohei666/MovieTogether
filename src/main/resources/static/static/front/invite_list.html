@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的邀约</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+        }
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .top {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            background-color: rgb(51, 51, 51, 86%);
+        }
+
+        .icon {
+            width: 50px;
+            position: relative;
+            left: 30px;
+            top: 15px;
+        }
+
+        .tit {
+            letter-spacing: 5px;
+            color: white;
+            font-size: 30px;
+            position: relative;
+            left: 40px;
+            font-family: 华文楷体;
+        }
+
+        .nav{
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            background-color: rgb(255, 255, 255, 70%);
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width:250px;
+        }
+
+        .li {
+            position: relative;
+            height: 60px;
+            line-height: 60px;
+            padding-left: 25px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .li2{
+            height: 50px;
+            line-height: 50px;
+            padding-left: 55px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .be{
+            width: 20px;
+            top: 20px;
+            margin-right: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .list {
+            position: fixed;
+            top: 81px;
+            right: 0;
+            bottom: 0;
+            left: 251px;
+            overflow-y: auto;
+            /*background-color: #fff;*/
+        }
+
+        .center {
+            background-color: white;
+            width: 60%;
+            margin-left: 20%;
+            height: 100vh;
+            position:fixed;
+            opacity: 0.8;
+            display: table;
+        }
+
+        .id {
+            font-weight: 400;
+            letter-spacing: 5px;
+            font-size: 40px;
+            position: relative;
+            left: 30px;
+            top: 10px;
+        }
+
+        .tit1 {
+            position: relative;
+            top: 100px;
+            left: 300px;
+            color:white;
+            font-weight:400;
+            font-size:30px;
+        }
+
+        .tit2 {
+            position: relative;
+            top: 200px;
+            left: 300px;
+            color:white;
+            font-weight:400;
+            font-size:30px;
+        }
+
+        .name {
+            background-color: lightgray;
+            position: relative;
+            left: 50px;
+            top: 50px;
+            height: 40px;
+            border: 1px solid lightgray;
+            width: 600px;
+            border-bottom: 10px solid white;
+            line-height: 50px;
+            padding-left: 10px;
+        }
+
+        .button1 {
+            background-color: rgb(102, 179, 247);
+            width: 50px;
+            height: 30px;
+            position: relative;
+            top: 50px;
+            border: 0;
+            color: white;
+            border-radius: 15px;
+            line-height: 30px;
+            margin-top: 10px;
+            left: -80px;
+        }
+
+        .button2 {
+            background-color: rgb(226, 107, 107);
+            width: 50px;
+            height: 30px;
+            position: relative;
+            top: 50px;
+            border: 0;
+            color: white;
+            border-radius: 15px;
+            line-height: 30px;
+            margin-top: 10px;
+            left: -60px;
+        }
+
+        .tupian {
+            position: relative;
+            top: 80px;
+            left: 50px;
+            width: 120px;
+            height: 170px;
+            float: left;
+            margin-right: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+<div class="top">
+    <img class="icon" src="imags/riFill-movie-2-fill.svg">
+    <b class="tit">一起看电影吧</b>
+</div>
+<!--    背景-->
+<div>
+    <img src="imags/back.jpg" class="back" height="100%" width="100%"
+         style="z-index: -1; position: fixed; opacity: 1.0;"/>
+</div>
+
+<div class="main">
+
+    <div class="nav">
+        <ul>
+            <li class="li">
+                <img src="imags/riLine-film-line@1x.png" class="be">
+                <a href="movie_index.html">热映电影</a>
+            <li class="li2" id="0">全部
+            <li class="li2" id="1">喜剧片
+            <li class="li2" id="2">情感片
+            <li class="li2" id="3">动作片
+            <li class="li2" id="4">悬疑片
+            <li class="li2" id="5">科幻片
+            <li class="li2" id="6">恐怖片
+            <li class="li">
+                <img src="imags/ze-friends-o@1x.png" class="be">
+                <a href="user_list.html">用户列表</a>
+            <li class="li" >
+                <img src="imags/arcoDesign-user-add@1x.png" class="be">
+                <a href="friend_list.html">好友列表</a>
+            <li class="li"  onclick="window.location.reload()">
+                <img src="imags/ze-envelop-o@1x (1).png" class="be">
+                <a href="invite_list.html" style="color: #4095E5">我的邀约</a>
+            <li class="li">
+                <img src="imags/iconPark-user@1x.png" class="be">
+                <a href="person_mes.html" >个人主页</a>
+        </ul>
+    </div>
+
+    <div class="list" id="list">
+    </div>
+</div>
+</body>
+
+<script>
+    // function deleteChild() {
+    //     var e = document.querySelector(".box2");
+    //     var first = e.firstElementChild;
+    //     while (first) {
+    //         first.remove();
+    //         first = e.firstElementChild;
+    //     }
+    // }
+    function st(){
+        Fetch('/invite/get', JSON.stringify({
+            token: localStorage.getItem("token")
+        }))
+            .then(res => {
+                list = res.list
+                msg = res.msg
+
+                if (res.list) {
+                    var list = res.list
+                    console.log("rtyhujk")
+                    console.log(res)
+                    // 整体框架
+                    var tbody = document.getElementById('list')
+                    tbody.style.position = "fixed"
+                    tbody.style.top = "81px"
+                    tbody.style.left = "251px"
+                    tbody.style.right = "0"
+                    tbody.style.bottom = "0"
+                    tbody.style.overflowY = "auto"
+                    // tbody.style.display = "flex"
+                    tbody.style.flexWrap = "wrap"
+
+                    var head1 = document.createElement("div")
+                    head1.style.display = "flex"
+                    head1.className = "head1"
+                    head1.innerText = "我的邀请"
+                    head1.style.height = "50px"
+                    head1.style.width = "1026px"
+                    head1.style.color = "white"
+                    head1.style.fontSize = "30px"
+                    // head1.style.border = "1px solid black"
+                    head1.style.letterSpacing = "3px"
+                    head1.style.marginLeft = "50px"
+                    head1.style.marginTop = "30px"
+
+                    var divz = document.createElement('div');
+                    divz.style.display = "flex"
+                    // divz.style.flexDirection = "row"
+                    divz.style.flexWrap = "wrap"
+                    divz.style.justifyContent = "center"
+                    // divz.style.marginTop = "100px"
+
+
+
+                    // 好友列表
+                    for (let i = 0; i < list.length; i++){
+                        //创建一个大条形
+                        var div = document.createElement("div")
+                        div.style.display = "flex"
+                        // div.style.flexDirection = "column"
+                        // div.style.alignItems = "center"
+                        div.style.marginTop = "20px"
+                        div.style.width = "1100px"
+                        div.style.height = "80px"
+                        div.style.backgroundColor = "rgb(255, 255, 255, 70%)"
+                        div.style.borderRadius = "15px"
+                        //名字框和信息框
+                        var p1 = document.createElement("p")
+                        var p2 = document.createElement("p")
+                        var div1 = document.createElement("div")
+                        var div2 = document.createElement("div")
+                        div2.style.marginLeft = "650px"
+                        //名字
+                        p1.innerText = list[i].nickname
+                        p1.style.fontSize = "25px"
+                        p1.style.paddingTop = "10px"
+                        p1.style.paddingLeft = "20px"
+                        //信息
+                        p2.innerText = list[i].sex + ' ' +list[i].age + '岁 ' + list[i].school + ' ' +list[i].label1 + ' ' + list[i].label2 + ' ' +list[i].label3
+                        p2.style.fontSize = "15px"
+                        p2.style.paddingTop = "5px"
+                        p2.style.paddingLeft = "20px"
+
+                        //邀约和删除按钮
+                        var button1 = document.createElement("button")
+                        var button2 = document.createElement("button")
+                        button1.className = "button1"
+                        button1.style.textAlign = "center"
+                        button1.style.backgroundColor = "#4095E5"
+                        button1.style.color = "white"
+                        button1.style.border = "none"
+                        button1.style.width = "85px"
+                        button1.style.height = "50px"
+                        button1.style.borderRadius = "25px"
+                        button1.style.fontSize = "18px"
+                        button1.style.marginTop = "15px"
+
+
+                        button2.className = "button2"
+                        button2.style.textAlign = "center"
+                        button2.style.backgroundColor = "#DE868F"
+                        button2.style.color = "white"
+                        button2.style.border = "none"
+                        button2.style.width = "85px"
+                        button2.style.height = "50px"
+                        button2.style.borderRadius = "20px"
+                        button2.style.fontSize = "18px"
+                        button2.style.marginTop = "15px"
+                        button2.style.marginLeft = "20px"
+
+
+                        button1.innerText = "接收"
+                        button2.innerText = "拒绝"
+                        div1.appendChild(p1)
+                        // div1.appendChild(br)
+                        div1.appendChild(p2)
+                        div2.appendChild(button1)
+                        div2.appendChild(button2)
+
+                        div.appendChild(div1)
+                        div.appendChild(div2)
+
+                        divz.appendChild(div)
+
+
+                        button1.onclick = function() {
+
+                            Fetch('/invite/create', JSON.stringify({
+                                token: token,
+                                receiver: list[i].id
+                            }))
+                                .then(res => {
+                                    msg = res.msg
+                                    alert(msg)
+                                })
+                        }
+
+                        console.log(i)
+                        button2.onclick = function (){
+                            Fetch('/friend/delete', JSON.stringify({
+                                token: token,
+                                friendid: list[i].id,
+
+                            }))
+                                .then(res => {
+                                    msg = res.msg
+                                    alert('删除成功，请刷新查看')
+
+                                })
+                        }
+                    }
+
+                    tbody.appendChild(head1)
+                    tbody.appendChild(divz)
+
+                    // res.list.forEach(function (i) {
+                    //
+                    // }
+                    //)
+                }
+                // if (list) {
+                //     var tbody = document.getElementById('box1')
+                //     list1.forEach(function(i) {
+                //         var tr = document.createElement("tr")
+                //         var td = document.createElement("td")
+                //         td.className = "name"
+                //         td.innerText = i.target.inviter_name
+                //         var button1 = document.createElement("button")
+                //         var button2 = document.createElement("button")
+                //         button1.className = "button1"
+                //         button2.className = "button2"
+                //         button1.innerText = "接受"
+                //         button2.innerText = "拒绝"
+                //         tr.appendChild(td)
+                //         tr.appendChild(button1)
+                //         tr.appendChild(button2)
+                //         tbody.appendChild(tr)
+                //
+                //         button1.onclick = function() {
+                //             deleteChild();
+                //             Fetch('/invite/accept', JSON.stringify({
+                //                 token: localStorage.getItem("token"),
+                //                 flag: "true",
+                //                 inviter: i.target.inviter_phone
+                //             }))
+                //                 .then(res => {
+                //
+                //                     list2 = res.list
+                //                     msg = res.msg
+                //
+                //                     if (list2) {
+                //                         var tbody2 = document.getElementById('box2')
+                //
+                //                         list2.forEach(function(j) {
+                //                             var img = document.createElement("img")
+                //                             img.src = j.cover
+                //                             img.className = "tupian"
+                //                             tbody2.appendChild(img)
+                //
+                //                             img.onclick = function (){
+                //                                 self.location = 'screen.html'
+                //                                 localStorage.setItem('movie_id', list2[j].id)
+                //                                 // console.log(list2[j].id)
+                //                                 // Fetch('/movie/screening', JSON.stringify({
+                //                                 //     id: list2[j].id
+                //                                 // }))
+                //                                 //     .then(res => {
+                //                                 //         mlist = res.list
+                //                                 //         console.log(mlist)
+                //                                 //     })
+                //
+                //                             }
+                //                         })
+                //                     }
+                //
+                //
+                //                 })
+                //         }
+                //
+                //
+                //         button2.onclick = function() {
+                //
+                //             Fetch('/invite/accept', JSON.stringify({
+                //                 token: localStorage.getItem("token"),
+                //                 flag: "",
+                //                 inviter: i.target.inviter_phone
+                //             }))
+                //                 .then(res => {
+                //
+                //
+                //                     msg = res.msg
+                //                     alert(
+                //                         '您已拒绝对方的邀约！'
+                //                     )
+                //                 })
+                //         }
+                //
+                //
+                //     })
+                // }
+            })
+
+    }
+    st();
+
+
+    async function Fetch(path, body) {
+        return await fetch('http://localhost:8080' + path, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: body,
+        }).then(res => {
+            return res.json()
+        })
+    }
+</script>
+
+</html>

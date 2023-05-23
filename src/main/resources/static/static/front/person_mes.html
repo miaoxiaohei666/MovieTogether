@@ -194,16 +194,16 @@
             <li class="li2" id="6">恐怖片
             <li class="li">
                 <img src="imags/ze-friends-o@1x.png" class="be">
-                <a href="">用户列表</a>
+                <a href="user_list.html">用户列表</a>
             <li class="li" >
                 <img src="imags/arcoDesign-user-add@1x.png" class="be">
-                <a href="">好友列表</a>
+                <a href="friend_list.html">好友列表</a>
             <li class="li">
                 <img src="imags/ze-envelop-o@1x.png" class="be">
-                <a href="">我的邀约</a>
+                <a href="invite_list.html">我的邀约</a>
             <li class="li" onclick="window.location.reload()">
                 <img src="imags/iconPark-user@1x (1).png" class="be">
-                <a href=""  style="color: #4095E5">个人主页</a>
+                <a href="person_mes.html"  style="color: #4095E5">个人主页</a>
         </ul>
     </div>
     <div class="center">
@@ -223,7 +223,7 @@
         <form style=" top: 15px; position: relative;">
             <table>
                 <tr>
-                    <td class="head">id</td>
+                    <td class="head">学号</td>
                     <td><input disabled ="true" type="text" class="body" id="id" value="无"></td>
                 </tr>
                 <tr>
@@ -272,11 +272,11 @@
             } else {
                 console.log(res)
                 console.log(res.data.sex)
-                document.getElementById("id").value = res.data.id
-                document.getElementById("name").value = res.data.nickname
+                document.getElementById("id").value = res.data.stunb
+                document.getElementById("name").value = res.data.name
                 document.getElementById("sex").value = res.data.sex
                 document.getElementById("age").value = res.data.age
-                // document.getElementById("school").value = res.school
+                document.getElementById("school").value = res.data.school
                 document.getElementById("love").value = res.data.label1 + ' ' + res.data.label2 + ' ' + res.data.label3
             }
 

@@ -133,7 +133,7 @@
             </ul>
         </div>
 
-        <div class="list">
+        <div class="list" id="list">
         </div>
     </div>
 </div>
@@ -154,100 +154,111 @@
     }
 
     // 用户列表
-    var map1 = new Map();
 
     function search3() {
-        Fetch('/user/label', JSON.stringify({
-            label: label,
-            address: localStorage.getItem("address")
+        Fetch('/user/list', JSON.stringify({
         }))
             .then(res => {
 
-                console.log(localStorage.getItem("address"))
-                list = res.list
-                console.log(res);
+                if (res.list) {
+                    var list = res.list
 
-                var tbody = document.querySelector(".list");
-                tbody.style.position = "fixed"
-                tbody.style.top = "81px"
-                tbody.style.left = "251px"
-                tbody.style.right = "0"
-                tbody.style.bottom = "0"
-                tbody.style.overflowY = "auto"
-                tbody.style.display = "flex"
+                    // 整体框架
+                    var tbody = document.getElementById('list')
+                    tbody.style.position = "fixed"
+                    tbody.style.top = "81px"
+                    tbody.style.left = "251px"
+                    tbody.style.right = "0"
+                    tbody.style.bottom = "0"
+                    tbody.style.overflowY = "auto"
+                    // tbody.style.display = "flex"
+                    tbody.style.flexWrap = "wrap"
 
-                var divz = document.createElement('div');
-                divz.style.display = "flex"
-                // divz.style.flexDirection = "row"
-                // divz.style.flexWrap = "wrap"
-                divz.style.justifyContent = "center"
+                    var divz = document.createElement('div');
+                    divz.style.display = "flex"
+                    // divz.style.flexDirection = "row"
+                    divz.style.flexWrap = "wrap"
+                    divz.style.justifyContent = "center"
+                    divz.style.marginTop = "10px"
 
-                for (let i = 0; i < list.length; i++) {
 
-                    if (map1.has(list[i].nickname) || list[i].address != localStorage.getItem("address"))
-                        continue;
-                    else
-                        map1.set(list[i].nickname, "1");
+                    // 好友列表
+                    for (let i = 0; i < list.length; i++){
+                        //创建一个大条形
+                        var div = document.createElement("div")
+                        div.style.display = "flex"
+                        // div.style.flexDirection = "column"
+                        // div.style.alignItems = "center"
+                        div.style.marginTop = "30px"
+                        div.style.width = "1100px"
+                        div.style.height = "80px"
+                        div.style.backgroundColor = "rgb(255, 255, 255, 70%)"
+                        div.style.borderRadius = "15px"
+                        //名字框和信息框
+                        var p1 = document.createElement("p")
+                        var p2 = document.createElement("p")
+                        var div1 = document.createElement("div")
+                        var div2 = document.createElement("div")
+                        div2.style.marginLeft = "750px"
+                        //名字
+                        p1.innerText = list[i].nickname
+                        p1.style.fontSize = "22px"
+                        p1.style.paddingTop = "10px"
+                        p1.style.paddingLeft = "20px"
+                        //信息
+                        p2.innerText = list[i].sex + ' ' +list[i].age + '岁 ' + list[i].school + ' ' + list[i].label1 + ' ' + list[i].label2 + ' ' +list[i].label3
+                        p2.style.fontSize = "15px"
+                        p2.style.paddingTop = "5px"
+                        p2.style.paddingLeft = "20px"
 
-                    //创建一个大条形
-                    var div = document.createElement("div")
-                    div.style.display = "flex"
-                    // div.style.flexDirection = "column"
-                    // div.style.alignItems = "center"
-                    // div.style.marginRight = "25px"
-                    div.style.marginTop = "40px"
-                    div.style.width = "600px"
-                    //名字框和信息框
-                    var p1 = document.createElement("p")
-                    var p2 = document.createElement("p")
-                    var div1 = document.createElement("div")
-                    var div2 = document.createElement("div")
-                    //名字
-                    p1.innerText = list[i].nickname
-                    //信息
-                    p2.innerText = list[i].sex + ' ' +list[i].age + '岁 ' + list[i].label1 + ' ' + list[i].label2 + ' ' +list[i].label3
-                    // 创建换行
-                    var br = document.createElement('br')
-                    //邀约和删除按钮
-                    var button1 = document.createElement("button")
-                    button1.className = "button1"
-                    button1.innerText = "添加好友"
+                        //添加好友按钮
+                        var button1 = document.createElement("button")
+                        button1.className = "button1"
+                        button1.style.textAlign = "center"
+                        button1.style.backgroundColor = "#4095E5"
+                        button1.style.color = "white"
+                        button1.style.border = "none"
+                        button1.style.width = "130px"
+                        button1.style.height = "50px"
+                        button1.style.borderRadius = "25px"
+                        button1.style.fontSize = "18px"
+                        button1.style.marginTop = "15px"
 
-                    div1.appendChild(p1)
-                    div1.appendChild(br)
-                    div1.appendChild(p2)
-                    div2.appendChild(button1)
+                        button1.innerText = "添加好友"
 
-                    div.appendChild(div1)
-                    div.appendChild(div2)
+                        div1.appendChild(p1)
+                        // div1.appendChild(br)
+                        div1.appendChild(p2)
+                        div2.appendChild(button1)
 
-                    divz.appendChild(div)
 
-                    // div.className = "b4"
-                    // div.innerHTML = list[i].nickname + " " + list[i].age + "岁    " + list[i].sex + " "
-                    //     + "武汉市 " + list[i].address;
+                        div.appendChild(div1)
+                        div.appendChild(div2)
 
-                    b.onclick=function () {
-                        //添加好友
-                        token=localStorage.getItem("token")
+                        divz.appendChild(div)
 
-                        Fetch('/friend/add', JSON.stringify({
-                            token: token,
-                            phone: list[i].phone
-                        }))
-                            .then(res => {
-                                msg = res.msg
-                                if(msg == "already add!"){
-                                    alert('请勿重复加好友！')
-                                }
-                                if(msg == "ok"){
-                                    alert('您已成功加他为好友')
-                                }
-                            })
+                        button1.onclick=function () {
+                            //添加好友
+                            token=localStorage.getItem("token")
+
+                            Fetch('/friend/add', JSON.stringify({
+                                token: token,
+                                phone: list[i].phone
+                            }))
+                                .then(res => {
+                                    msg = res.msg
+                                    if(msg == "already add!"){
+                                        alert('请勿重复加好友！')
+                                    }
+                                    if(msg == "ok"){
+                                        alert('您已成功加他为好友')
+                                    }
+                                })
+                        }
                     }
-                }
+                    tbody.appendChild(divz)
 
-                tbody.appendChild(div);
+                }
 
             })
     }
